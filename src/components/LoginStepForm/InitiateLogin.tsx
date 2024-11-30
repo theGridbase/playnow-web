@@ -5,8 +5,8 @@ import Link from "next/link";
 import Icon from "../ui/Icon/Icon";
 import { NextStepType } from "./LoginStepForm";
 import { initiateLogin } from "./action";
-import styles from "@/styles/components/loginstepform.module.scss";
 import { signIn, signOut } from "next-auth/react";
+import styles from "@/styles/components/loginstepform.module.scss";
 
 interface Props {
   next: (args: NextStepType) => void;
@@ -53,25 +53,39 @@ export default function InitiateLogin({ next }: Props) {
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
         autoComplete="off"
+        className={styles.loginInitiateForm}
       >
         <Form.Item<FieldType>
           label="Email address"
           name="email"
+          className={styles.formItem}
           rules={[{ required: true, message: "Please input your email!" }]}
         >
-          <Input placeholder="Email address" size="large" />
+          <Input
+            placeholder="Email address"
+            size="large"
+            className={styles.input}
+          />
         </Form.Item>
 
         <Form.Item<FieldType>
           label="Password"
           name="password"
+          className={styles.formItem}
           rules={[{ required: true, message: "Please input your password!" }]}
         >
-          <Input.Password placeholder="password" size="large" />
+          <Input.Password
+            placeholder="password"
+            size="large"
+            className={styles.input}
+          />
         </Form.Item>
 
         <Flex align="flex-end" justify="flex-end">
-          <Link href={"/forget-password"} className={"primary-link"}>
+          <Link
+            href={"/forget-password"}
+            className={`primary-link ${styles.linkTextForgetPwd}`}
+          >
             Forget Password?
           </Link>
         </Flex>
@@ -92,6 +106,7 @@ export default function InitiateLogin({ next }: Props) {
             shape="round"
             loading={loading}
             disabled={loading}
+            className={styles.button}
           >
             Login
           </Button>
@@ -105,8 +120,8 @@ export default function InitiateLogin({ next }: Props) {
         shape="round"
         block
         icon={<Icon name="google.svg" size="24" />}
-        className="mb-large"
         onClick={() => handleSocialLogin()}
+        className={`${styles.button} mb-middle`}
       >
         Sign in with Google
       </Button>

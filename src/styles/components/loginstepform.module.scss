@@ -25,11 +25,38 @@
   }
   p.registerPara {
     text-align: center;
-
+    font-size: 14 !important;
+    font-weight: 500 !important;
     a {
       color: $primary-color;
     }
   }
+
+  .loginInitiateForm {
+    .formItem {
+      label {
+        font-size: 18px;
+        font-weight: 400;
+      }
+      .input {
+        height: 48px;
+      }
+    }
+
+    .button {
+      font-size: 20px !important;
+      font-weight: 600 !important;
+    }
+    .linkTextForgetPwd {
+      font-weight: 500 !important;
+      font-size: 14 !important;
+    }
+  }
+  .button {
+    font-size: 20px !important;
+    font-weight: 600 !important;
+  }
+
   .verifyForm {
     .otpInput {
       input {

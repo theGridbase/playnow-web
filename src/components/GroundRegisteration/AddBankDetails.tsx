@@ -32,7 +32,7 @@ function AddBankDetails({ handleNext }: Props) {
         autoComplete="off"
         className={styles.placeTitleForm}
       >
-        <Flex align="center" justify="flex-end">
+        <Flex align="center" justify="flex-end" >
           <Button
             type="default"
             shape="round"

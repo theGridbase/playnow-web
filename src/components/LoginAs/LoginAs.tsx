@@ -1,7 +1,8 @@
 "use client";
-import { Button, Divider } from "antd";
+import { Button, Divider, Flex } from "antd";
 import { useRouter } from "next/navigation";
 import React from "react";
+import styles from "@/styles/components/loginas.component.module.scss";
 
 type loginType = "owner" | "customer" | "social";
 
@@ -15,7 +16,7 @@ export default function LoginAs() {
   };
 
   return (
-    <div>
+    <div className={styles.loginAsSection}>
       <Button
         type="primary"
         shape="round"
@@ -31,24 +32,34 @@ export default function LoginAs() {
         shape="round"
         block
         size="large"
-        className="mb-middle"
         onClick={() => handleClick("owner")}
+        className={styles.borderedBtn}
       >
         Login as owner
       </Button>
 
       <Divider>or</Divider>
 
-      <Button
-        type="primary"
-        shape="round"
-        block
-        size="large"
-        className="mb-middle"
-        onClick={() => handleClick("social")}
-      >
-        Login With Google
-      </Button>
+      <Flex align="center" justify="start" gap={10}>
+        <Button
+          type="primary"
+          shape="round"
+          size="large"
+          className={styles.socialBtn}
+          onClick={() => handleClick("social")}
+        >
+          Login With Google
+        </Button>
+        <Button
+          type="primary"
+          shape="round"
+          size="large"
+          className={`${styles.socialBtn} ${styles.facebookBtn}`}
+          onClick={() => handleClick("social")}
+        >
+          Login With Facebook
+        </Button>
+      </Flex>
     </div>
   );
 }

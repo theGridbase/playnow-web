@@ -1,0 +1,27 @@
+@import "../variables.module.scss";
+
+.loginAsSection {
+  button {
+    height: 65px !important;
+    font-weight: 600;
+  }
+
+  button.borderedBtn {
+    color: $primary-color;
+    border-color: $primary-color;
+    margin-bottom: 81px;
+  }
+
+  button.socialBtn {
+    border-radius: 6px !important;
+    min-height: 36px !important;
+    height: 36px !important;
+    font-size: 16px !important;
+    font-weight: 400;
+    flex: 1;
+  }
+
+  button.facebookBtn {
+    background: #1877f2;
+  }
+}
