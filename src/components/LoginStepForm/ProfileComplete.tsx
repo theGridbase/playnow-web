@@ -95,6 +95,7 @@ export default function ProfileComplete({ userData }: Props) {
     if (response2?.status === 200) {
       message.success("successfull login");
       window.location.reload();
+      return
     }
     message.error("Inavlid credentials");
   };

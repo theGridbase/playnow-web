@@ -10,7 +10,7 @@ export const initiateLogin = async (body: ILoginInitiate) => {
 
   const response = await api.userLogin("logininitiate", body);
   if (response?.code && response?.code !== 200) {
-    return { status: 400, message: response.message, data: null };
+    return { status: 400, message: "invalid credentials", data: null };
   }
 
   return { status: 200, message: "success", data: response.data };
