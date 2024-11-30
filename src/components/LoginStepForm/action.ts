@@ -24,6 +24,8 @@ export const initiateLogin = async (body: ILoginInitiate) => {
     return { status: 400, message: "invalid credentials", data: null };
   }
 
+  console.log(response);
+  
   return { status: 200, message: "success", data: response.data };
 };
 
