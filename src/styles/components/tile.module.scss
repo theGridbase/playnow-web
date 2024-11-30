@@ -1,0 +1,44 @@
+@import "../variables.module.scss";
+
+.tile {
+  min-width: 367px;
+  min-height: 161px;
+  border-radius: 8.596px;
+  border: 1.322px solid #f2f2f2;
+  background: #fefefe;
+  flex-shrink: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  &:hover {
+    border: 1px solid $primary-color;
+  }
+
+  svg {
+    path {
+      color: #f2f2f2;
+    }
+  }
+  @media (max-width: 768px) {
+    //mobile device
+    min-width: 100%;
+  }
+}
+
+.selectedTile {
+  background: $primary-color;
+
+  svg {
+    fill: #ffffff;
+    path {
+      fill: #ffffff;
+    }
+  }
+
+  p {
+    color: #ffffff;
+  }
+}

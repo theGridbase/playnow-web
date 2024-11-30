@@ -1,0 +1,36 @@
+@import "../variables.module.scss";
+
+.layout {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: stretch;
+
+  .contentSection {
+    flex: 1 1 50%;
+    box-sizing: border-box;
+    padding: 3rem 6rem;
+    background: $secondary-color;
+
+    @media (max-width: 768px) { //mobile device 
+      padding: 0.5rem 3rem;
+    }
+  }
+
+  div.imageSection {
+    flex: 1 1 50%;
+    position: relative;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+
+    img.sideImage {
+      object-fit: cover;
+      border-top-left-radius: 15px;
+      border-bottom-left-radius: 15px;
+    }
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+}

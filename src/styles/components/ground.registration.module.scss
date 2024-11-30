@@ -1,0 +1,214 @@
+@import "../variables.module.scss";
+
+.groundRegistrationContainer {
+  min-height: 80vh;
+  padding: 3rem 3rem;
+}
+
+.amenitiesStep {
+  .button {
+    min-width: 222px;
+    color: $primary-color !important;
+  }
+  h1 {
+    font-size: 38px;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+}
+.amenitiesStepSelection {
+  .button {
+    min-width: 222px;
+    color: $primary-color !important;
+  }
+  h1 {
+    font-size: 38px;
+    text-align: left;
+  }
+  p {
+    font-size: 16px;
+    text-align: left;
+    margin-bottom: 2rem;
+  }
+
+  h2 {
+    font-size: 24px;
+    text-align: left;
+  }
+}
+
+.addressStep {
+  .button {
+    min-width: 222px;
+    color: $primary-color !important;
+  }
+  h1 {
+    font-size: 38px;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .mapContainer {
+    height: 100vh;
+    width: 100%;
+  }
+}
+
+.confirmAddressStep {
+  .confirmAddressForm {
+    .button {
+      min-width: 222px;
+      color: $primary-color !important;
+    }
+    h1 {
+      font-size: 38px;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .formBody {
+      width: 50%;
+      margin: 0 auto;
+
+      @media (max-width: 768px) {
+        //mobile device
+        width: 100%;
+      }
+    }
+  }
+}
+
+.photosStep {
+  .button {
+    min-width: 222px;
+    color: $primary-color !important;
+  }
+  h1 {
+    font-size: 38px;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .uploader {
+    width: 50%;
+    margin: 0 auto;
+
+    @media (max-width: 768px) {
+      //mobile device
+      width: 100%;
+    }
+  }
+}
+
+.placeTitle {
+  .placeTitleForm {
+    .button {
+      min-width: 222px;
+      color: $primary-color !important;
+    }
+    h1 {
+      font-size: 38px;
+      text-align: center;
+    }
+
+    p.screenDescription {
+      font-size: 16px;
+      color: $grey-color;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .formBody {
+      width: 50%;
+      margin: 0 auto;
+
+      @media (max-width: 768px) {
+        //mobile device
+        width: 100%;
+      }
+    }
+  }
+}
+.placePrice {
+  .placePriceForm {
+    .button {
+      min-width: 222px;
+      color: $primary-color !important;
+    }
+    h1 {
+      font-size: 38px;
+      text-align: center;
+    }
+
+    p.screenDescription {
+      font-size: 16px;
+      color: $grey-color;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .formBody {
+      width: 30%;
+      margin: 0 auto;
+
+      @media (max-width: 768px) {
+        //mobile device
+        width: 100%;
+      }
+    }
+  }
+}
+.addSlots {
+  .addSlotsForm {
+    .button {
+      min-width: 222px;
+      color: $primary-color !important;
+    }
+    h1 {
+      font-size: 38px;
+      text-align: center;
+    }
+
+    p.screenDescription {
+      font-size: 16px;
+      color: $grey-color;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .formBody {
+      width: 30%;
+      margin: 0 auto;
+
+      @media (max-width: 768px) {
+        //mobile device
+        width: 100%;
+      }
+    }
+  }
+}
+
+.bankDetails {
+  .button {
+    min-width: 222px;
+    color: $primary-color !important;
+  }
+  h1 {
+    font-size: 38px;
+    text-align: center;
+  }
+
+  p.screenDescription {
+    font-size: 16px;
+    color: $grey-color;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .globeImage {
+    position: relative;
+    flex: 1;
+  }
+  .bankInfo {
+    flex: 1;
+  }
+}
