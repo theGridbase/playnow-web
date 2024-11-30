@@ -3,6 +3,11 @@
 .loginStepForm {
   .steps {
     margin-bottom: 3rem;
+
+    @media (max-width: 768px) {
+      //mobile device
+      overflow-x: scroll;
+    }
   }
 }
 .stepContainer {
