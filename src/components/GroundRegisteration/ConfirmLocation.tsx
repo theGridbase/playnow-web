@@ -1,5 +1,5 @@
 import React from "react";
-import { LocationDetails } from "@/app/_lib/interfaces";
+import { ConfirmLocationDetails, LocationDetails } from "@/app/_lib/interfaces";
 
 import styles from "@/styles/components/ground.registration.module.scss";
 import { Button, Flex, Form, Input } from "antd";
@@ -10,7 +10,7 @@ interface Props {
 }
 
 const labels = {
-  countryCode: "Country Code",
+  // countryCode: "Country Code",
   country: "Country",
   city: "City",
   postalCode: "Postal Code",
@@ -18,6 +18,7 @@ const labels = {
 };
 
 export default function ConfirmLocation({ location, handleNext }: Props) {
+  const {countryCode , ...rest} = location
   const onFinish = async (formData: LocationDetails) => {
     handleNext({ location: location });
   };
@@ -50,19 +51,19 @@ export default function ConfirmLocation({ location, handleNext }: Props) {
         </Flex>
         <h1 className={styles.screenName}>Confirm your address</h1>
         <div className={styles.formBody}>
-          {Object.keys(location).map((key) => (
+          {Object.keys(rest).map((key) => (
             <Form.Item
               key={key}
-              label={labels[key as keyof LocationDetails] || key}
+              label={labels[key as keyof ConfirmLocationDetails] || key}
               name={key}
               rules={[
                 {
                   required: true,
                   message: `${
-                    labels[key as keyof LocationDetails] || key
+                    labels[key as keyof ConfirmLocationDetails] || key
                   } is required.`,
                 },
-                ...(key === "countryCode" ? [] : []), // No specific validation for country code
+                ...(key === "countryCode" ? [] : []),// No specific validation for country code
                 ...(key === "postalCode"
                   ? [
                       {
@@ -75,7 +76,7 @@ export default function ConfirmLocation({ location, handleNext }: Props) {
             >
               <Input
                 placeholder={`Enter ${
-                  labels[key as keyof LocationDetails] || key
+                  labels[key as keyof ConfirmLocationDetails] || key
                 }`}
                 size="large"
                 maxLength={100} // Character limit of 100

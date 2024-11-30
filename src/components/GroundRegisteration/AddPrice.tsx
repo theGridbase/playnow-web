@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Flex, Form, Input } from "antd";
+import { Button, Flex, Form, Input,Select, } from "antd";
 import styles from "@/styles/components/ground.registration.module.scss";
 
 interface Props {
@@ -9,6 +9,9 @@ interface Props {
 type FieldType = {
   price: string;
 };
+const selectBefore = (
+  <Select defaultValue="PKR" options={[{value : 'PKR', label : 'Rs.'}]} />
+);
 
 export default function AddPlacePrice({ handleNext }: Props) {
   const onFinish = async (d: FieldType) => {
@@ -18,6 +21,7 @@ export default function AddPlacePrice({ handleNext }: Props) {
   const onFinishFailed = (errorInfo: any) => {
     console.error("Validation Failed:", errorInfo);
   };
+  
 
   return (
     <div className={styles.placePrice}>
@@ -55,7 +59,8 @@ export default function AddPlacePrice({ handleNext }: Props) {
               { max: 6, message: "Price must not exceed 6 digits." },
             ]}
           >
-            <Input prefix="$" placeholder="Price" size="large" type="number" />
+            {/* <Input prefix="$" placeholder="Price" size="large" type="number" /> */}
+            <Input className={styles.priceInput} addonBefore={selectBefore} addonAfter={"/Hr"} defaultValue="0" />
           </Form.Item>
         </div>
       </Form>

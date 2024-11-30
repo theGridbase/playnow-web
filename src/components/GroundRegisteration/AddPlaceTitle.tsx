@@ -53,7 +53,7 @@ export default function AddPlaceTitle({ handleNext }: Props) {
               { max: 100, message: "Title must not exceed 100 characters." }, // Added max character limit validation
             ]}
           >
-            <Input.TextArea  placeholder="Place title" size="large" rows={5} />
+            <Input  placeholder="Place title" size="large"  />
           </Form.Item>
         </div>
       </Form>

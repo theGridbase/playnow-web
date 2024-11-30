@@ -48,9 +48,9 @@ function AddBankDetails({ handleNext }: Props) {
         <h1 className={styles.screenName}>Setup Bank Details</h1>
         <p className={styles.screenDescription}>You can change it any time</p>
 
-        <Flex align="stretch" justify="center" gap={10} wrap>
+        <Flex align="stretch" justify="center" gap={30} wrap>
           <div className={styles.globeImage}>
-            <CustomImage name="globe.png" alt="globe" fill />
+            <CustomImage name="globe.png" alt="globe" width={622} height={456} />
           </div>
           <div className={styles.bankInfo}>
             <h2>Payment details</h2>

@@ -3,6 +3,7 @@
 .groundRegistrationContainer {
   min-height: 80vh;
   padding: 3rem 3rem;
+
   @media (max-width: 768px) {
     //mobile device
     padding: 0.5rem;
@@ -14,6 +15,7 @@
     min-width: 222px;
     color: $primary-color !important;
   }
+
   h1 {
     font-size: 38px;
     text-align: center;
@@ -25,24 +27,29 @@
     }
   }
 }
+
 .amenitiesStepSelection {
   .button {
     min-width: 222px;
     color: $primary-color !important;
   }
+
   h1 {
     font-size: 38px;
     text-align: left;
+
     @media (max-width: 768px) {
       //mobile device
       font-size: 20px;
     }
   }
+
   p {
     font-size: 16px;
-   
+
     text-align: left;
     margin-bottom: 2rem;
+
     @media (max-width: 768px) {
       //mobile device
       font-size: 14px;
@@ -65,10 +72,12 @@
     min-width: 222px;
     color: $primary-color !important;
   }
+
   h1 {
     font-size: 38px;
     text-align: center;
     margin-bottom: 2rem;
+
     @media (max-width: 768px) {
       //mobile device
       font-size: 20px;
@@ -87,10 +96,12 @@
       min-width: 222px;
       color: $primary-color !important;
     }
+
     h1 {
       font-size: 38px;
       text-align: center;
       margin-bottom: 2rem;
+
       @media (max-width: 768px) {
         //mobile device
         font-size: 20px;
@@ -114,10 +125,12 @@
     min-width: 222px;
     color: $primary-color !important;
   }
+
   h1 {
     font-size: 38px;
     text-align: center;
     margin-bottom: 2rem;
+
     @media (max-width: 768px) {
       //mobile device
       font-size: 20px;
@@ -141,9 +154,11 @@
       min-width: 222px;
       color: $primary-color !important;
     }
+
     h1 {
       font-size: 38px;
       text-align: center;
+
       @media (max-width: 768px) {
         //mobile device
         font-size: 20px;
@@ -155,6 +170,7 @@
       color: $grey-color;
       text-align: center;
       margin-bottom: 2rem;
+
       @media (max-width: 768px) {
         //mobile device
         font-size: 14px;
@@ -162,7 +178,8 @@
     }
 
     .formBody {
-      width: 50%;
+      width: 517px;
+      height: 252px;
       margin: 0 auto;
 
       @media (max-width: 768px) {
@@ -172,15 +189,18 @@
     }
   }
 }
+
 .placePrice {
   .placePriceForm {
     .button {
       min-width: 222px;
       color: $primary-color !important;
     }
+
     h1 {
       font-size: 38px;
       text-align: center;
+
       @media (max-width: 768px) {
         //mobile device
         font-size: 20px;
@@ -192,6 +212,7 @@
       color: $grey-color;
       text-align: center;
       margin-bottom: 2rem;
+
       @media (max-width: 768px) {
         //mobile device
         font-size: 14px;
@@ -201,6 +222,18 @@
     .formBody {
       width: 30%;
       margin: 0 auto;
+      display: flex;
+      justify-content: center;
+
+      .priceInput {
+        border-radius: 0px !important;
+        width: 200px !important;
+        margin: 0 auto;
+
+        input {
+          border-radius: 0px !important;
+        }
+      }
 
       @media (max-width: 768px) {
         //mobile device
@@ -209,15 +242,18 @@
     }
   }
 }
+
 .addSlots {
   .addSlotsForm {
     .button {
       min-width: 222px;
       color: $primary-color !important;
     }
+
     h1 {
       font-size: 38px;
       text-align: center;
+
       @media (max-width: 768px) {
         //mobile device
         font-size: 20px;
@@ -229,6 +265,7 @@
       color: $grey-color;
       text-align: center;
       margin-bottom: 2rem;
+
       @media (max-width: 768px) {
         //mobile device
         font-size: 14px;
@@ -242,6 +279,14 @@
       @media (max-width: 768px) {
         //mobile device
         width: 100%;
+      }
+
+      .daySlot {
+
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        border-radius: 15px;
+        margin-bottom: 1rem;
+        padding: 1.5rem;
       }
     }
   }
@@ -252,9 +297,11 @@
     min-width: 222px;
     color: $primary-color !important;
   }
+
   h1 {
     font-size: 38px;
     text-align: center;
+
     @media (max-width: 768px) {
       //mobile device
       font-size: 20px;
@@ -266,16 +313,29 @@
     color: $grey-color;
     text-align: center;
     margin-bottom: 2rem;
+
     @media (max-width: 768px) {
       //mobile device
       font-size: 14px;
     }
   }
+
   .globeImage {
     position: relative;
-    flex: 1;
+    // width: 40%;
+    @media (max-width: 768px) {
+      //mobile device
+      display: none;
+    }
   }
+  
   .bankInfo {
-    flex: 1;
+    width: 622px;
+    // padding: 0 10%;
+    padding-top: 5%;
+    @media (max-width: 768px) {
+      //mobile device
+      padding-top: 0%;
+    }
   }
 }

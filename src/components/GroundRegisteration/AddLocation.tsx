@@ -50,7 +50,7 @@ const GeoSearch = ({
     const searchControl = new GeoSearchControl({
       provider,
       style: "bar",
-      showMarker: true,
+      showMarker: false,
       showPopup: true,
       retainZoomLevel: false,
       autoClose: true,
@@ -105,7 +105,8 @@ const GeoSearch = ({
 
 // Custom Icon Component
 const MyCustomIcon = L.divIcon({
-  html: `<Icon name="marker.svg" size="56" />`,
+  html: `<img src="/assets/icons/marker.svg" alt="Marker" width="85" height="85"/>`,
+
   className: "", // Prevent additional Leaflet styling
   iconSize: [40, 40], // Adjust size
 });
