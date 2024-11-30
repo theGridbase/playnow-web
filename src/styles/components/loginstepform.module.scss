@@ -11,6 +11,16 @@
   }
 }
 .stepContainer {
+  .signupinput{
+    height: 48px;
+        padding-left: 30px;
+  }
+  // .custom-select-placeholder .ant-select-selection-placeholder {
+  //   padding-left: 20px; /* Add padding to the placeholder */
+  // }
+  // .ant-select-selection-placeholder{
+  //   border: 2px red solid !important;
+  // }
   .stepHeading {
     text-align: center;
     font-size: 36px;
@@ -25,10 +35,11 @@
   }
   p.registerPara {
     text-align: center;
-    font-size: 14 !important;
+    font-size: 14px !important;
     font-weight: 500 !important;
     a {
       color: $primary-color;
+      
     }
   }
 
@@ -40,6 +51,7 @@
       }
       .input {
         height: 48px;
+        padding-left: 30px;
       }
     }
 

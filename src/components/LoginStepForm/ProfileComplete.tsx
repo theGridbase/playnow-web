@@ -5,7 +5,7 @@ import { createInitialProfile, getProfileExtras } from "./action";
 import { IUser, ProfileExtras } from "@/app/_lib/interfaces";
 import { signIn } from "next-auth/react";
 import { redirect } from "next/navigation";
-
+import Icon from "../ui/Icon/Icon";
 type FieldType = {
   profileImage: string;
   firstName: string;
@@ -74,7 +74,7 @@ export default function ProfileComplete({ userData }: Props) {
     const { profileImage, ...rest } = d;
     const payload = {
       email : userData.email,
-      profileImage: imageUrl,
+      profileImage: "N/A",
       ...rest,
     };
     console.log("pa", payload);
@@ -115,7 +115,7 @@ export default function ProfileComplete({ userData }: Props) {
         onFinish={onFinish}
         autoComplete="off"
       >
-        <Form.Item
+        {/* <Form.Item
           name="profileImage"
           rules={[
             { required: true, message: "Please upload your profile image!" },
@@ -148,7 +148,7 @@ export default function ProfileComplete({ userData }: Props) {
               )}
             </Upload>
           </Flex>
-        </Form.Item>
+        </Form.Item> */}
         <Flex align="center" justify="space-between" gap={10} wrap>
           <Form.Item<FieldType>
             label="First Name"
@@ -158,7 +158,7 @@ export default function ProfileComplete({ userData }: Props) {
             ]}
             style={{ flex: 1 }}
           >
-            <Input placeholder="First Name" size="large" />
+            <Input placeholder="First Name" size="large" className={styles.signupinput} />
           </Form.Item>
           <Form.Item<FieldType>
             label="Last Name"
@@ -168,7 +168,7 @@ export default function ProfileComplete({ userData }: Props) {
             ]}
             style={{ flex: 1 }}
           >
-            <Input placeholder="Last Name" size="large" />
+            <Input placeholder="Last Name" size="large"  className={styles.signupinput} />
           </Form.Item>
         </Flex>
         <Flex align="center" justify="space-between" gap={10} wrap>
@@ -181,6 +181,8 @@ export default function ProfileComplete({ userData }: Props) {
             <Select
               size="large"
               placeholder="Country"
+              suffixIcon={<Icon size="12" name="downarrow.svg"/>}
+
               options={profleExtras?.countries.map((e) => ({
                 value: e,
                 label: e.toLowerCase(),
@@ -196,6 +198,8 @@ export default function ProfileComplete({ userData }: Props) {
             <Select
               size="large"
               placeholder="City"
+              suffixIcon={<Icon size="12" name="downarrow.svg"/>}
+
               options={profleExtras?.cities.map((e) => ({
                 value: e,
                 label: e.toLowerCase(),
@@ -213,6 +217,8 @@ export default function ProfileComplete({ userData }: Props) {
             <Select
               size="large"
               placeholder="Gender"
+              suffixIcon={<Icon size="12" name="downarrow.svg"/>}
+
               options={profleExtras?.genders.map((e) => ({
                 value: e,
                 label: e.toLowerCase(),
@@ -230,6 +236,8 @@ export default function ProfileComplete({ userData }: Props) {
             <Select
               size="large"
               mode="multiple"
+              suffixIcon={<Icon size="12" name="downarrow.svg"/>}
+
               placeholder="Interests"
               options={profleExtras?.interests.map((e) => ({
                 value: e,
