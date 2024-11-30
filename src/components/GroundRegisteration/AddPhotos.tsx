@@ -78,9 +78,12 @@ export default function AddPhotos({ handleNext }: Props) {
 
       <div className={styles.uploader}>
         <Dragger {...props} fileList={fileList} >
-          <p className="ant-upload-drag-icon" style={{margin : '150px 50px'}}>
+          <div style={{margin : "100px 0"}}>
+          <p className="ant-upload-drag-icon">
             <InboxOutlined />
           </p>
+          <Button type="default">Add Photos</Button>
+          </div>
         </Dragger>
       </div>
     </div>

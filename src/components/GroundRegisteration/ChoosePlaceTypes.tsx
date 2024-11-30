@@ -49,7 +49,7 @@ export default function ChoosePlaceTypes({ handleNext }: Props) {
         Which of these best describes your place?
       </h1>
 
-      <Flex align="center" justify="space-evenly" gap={20} wrap>
+      <Flex align="center" justify="flex-start" gap={20} wrap>
         {placeTypes.map((place) => (
           <Tile
             {...place}

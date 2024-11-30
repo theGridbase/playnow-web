@@ -68,4 +68,5 @@ export interface LocationDetails {
   postalCode?: string;
   address?: string;
 }
+export type ConfirmLocationDetails=Omit<LocationDetails, "countryCode">
 

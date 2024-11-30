@@ -55,7 +55,7 @@ function AddAmenities({ handleNext }: Props) {
       <Flex
         className="mb-large"
         align="center"
-        justify="space-evenly"
+        justify="flex-start"
         gap={20}
         wrap
       >
