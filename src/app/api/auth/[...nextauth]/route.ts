@@ -35,7 +35,7 @@ export const authOptions: NextAuthOptions = {
             name: sessionedUser.name,
             email: sessionedUser.email,
             role: sessionedUser.role,
-            profile: sessionedUser.profile,
+            // profile: sessionedUser.profile,
             accessToken: access_token,
             refreshToken: refresh_token,
           } as any;
@@ -72,7 +72,7 @@ export const authOptions: NextAuthOptions = {
         token.name = user.name;
         token.email = user.email;
         token.role = user.role;
-        token.profile = user.profile;
+        // token.profile = user.profile;
         token.accessToken = user.accessToken;
         token.refreshToken = user.refreshToken;
       }
@@ -85,7 +85,7 @@ export const authOptions: NextAuthOptions = {
           name: token.name,
           email: token.email,
           role: token.role,
-          profile: token.profile,
+          // profile: token.profile,
         };
         session.accessToken = token.accessToken;
         session.refreshToken = token.refreshToken;

@@ -11,7 +11,7 @@ export default function page({ searchParams }: PageProps) {
     redirect("/forget-password");
   }
   return (
-    <div>
+    <div style={{ maxWidth: "450px", margin: "0 auto" }}>
       <DynamicImport
         components={[{ type: "changePasswordForm", token: token }]}
       />
