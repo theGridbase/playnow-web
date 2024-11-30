@@ -7,6 +7,7 @@ import ProfileComplete from "./ProfileComplete";
 import styles from "@/styles/components/loginstepform.module.scss";
 import { IUser } from "@/app/_lib/interfaces";
 import { signIn } from "next-auth/react";
+import { getVerifyCookie } from "./action";
 
 export type NextStepType = Partial<IUser>;
 
@@ -19,6 +20,19 @@ export default function LoginStepForm() {
     accessToken: "",
     refreshToken: "",
   });
+
+  useEffect(() => {
+    (async () => {
+      const verifyStep = await getVerifyCookie();
+      if (
+        verifyStep.data?.name === "VERIFY_ACCOUNT" &&
+        verifyStep.data?.value
+      ) {
+        setStep(1);
+        setUserData((prev) => ({ ...prev, email: verifyStep.data?.value }));
+      }
+    })();
+  }, []);
 
   const next = useCallback(
     async (data: NextStepType) => {
