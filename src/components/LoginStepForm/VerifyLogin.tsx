@@ -6,6 +6,8 @@ import { resendOtp, verifyLogin } from "./action";
 import { IUser } from "@/app/_lib/interfaces";
 import { signIn } from "next-auth/react";
 import { redirect } from "next/navigation";
+import Icon from "../ui/Icon/Icon";
+import CustomImage from "../ui/CustomImage/CustomImage";
 
 interface Props {
   userData: IUser;
@@ -84,10 +86,10 @@ export default function VerifyLogin({ userData, next, prev }: Props) {
             className={styles.otpInput}
             size="large"
             length={4}
-            mask="*"
+            
           />
         </Form.Item>
-
+ 
         <Flex justify="flex-end" className="mb-middle">
           <Button
             type="text"
