@@ -16,7 +16,8 @@ export const COMPONENTS: Record<string, any> = {
   registerForm: dynamic(() => import("@/components/RegisterForm/RegisterForm")),
   footer: dynamic(() => import("@/components/Footer/Footer")),
   groundRegistration: dynamic(
-    () => import("@/components/GroundRegisteration/GroundRegisteration")
+    () => import("@/components/GroundRegisteration/GroundRegisteration"),
+    { ssr: false }
   ),
 };
 

@@ -16,27 +16,38 @@ import { IRegisterUser } from "@/app/_lib/interfaces";
 import { registerUserRequest } from "./action";
 import styles from "@/styles/components/loginstepform.module.scss";
 import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 
 interface Props {}
 
 interface FieldType extends IRegisterUser {
-  terms: string;
+  terms: boolean;
 }
 
 export default function RegisterForm({}: Props) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const onFinish = async (d: FieldType) => {
-    setLoading(true)
-    const { terms, ...rest } = d;
-    const response = await registerUserRequest(rest);
-    setLoading(false)
-    if (response.status !== 200) {
-      message.error(response.message || "something went wrong");
-      return;
+    try {
+      setLoading(true);
+      const { terms, ...rest } = d;
+      if (!terms) {
+        setLoading(false);
+        message.error("please accept the terms and conditions");
+        return;
+      }
+      const response = await registerUserRequest(rest);
+      setLoading(false);
+      if (response.status !== 200) {
+        message.error(response.message || "something went wrong");
+        return;
+      }
+      message.success("registeration successfull");
+      router.replace("/login-as");
+    } catch (error) {
+      message.error("something went wrong");
+      setLoading(false);
     }
-    message.success("registeration successfull");
-    router.replace("/login-as");
   };
   const onFinishFailed = () => {};
   return (
@@ -66,7 +77,13 @@ export default function RegisterForm({}: Props) {
         <Form.Item<FieldType>
           label="Email address"
           name="email"
-          rules={[{ required: true, message: "Please input your email!" }]}
+          rules={[
+            {
+              required: true,
+              message: "Please input your email!",
+              type: "email",
+            },
+          ]}
         >
           <Input placeholder="Email address" size="large" />
         </Form.Item>
@@ -130,6 +147,7 @@ export default function RegisterForm({}: Props) {
         block
         icon={<Icon name="google.svg" size="24" />}
         className="mb-large"
+        onClick={() => signIn("google")}
       >
         Sign up with Google
       </Button>

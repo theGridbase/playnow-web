@@ -134,7 +134,7 @@ export class PlayNowApi {
         headers: {
           "Content-Type": "application/json",
         },
-        next: { revalidate: 3600 },
+        cache: "no-store",
       });
       return await request.json();
     } catch (error) {
@@ -151,7 +151,7 @@ export class PlayNowApi {
         headers: {
           "Content-Type": "application/json",
         },
-        next: { revalidate: 3600 },
+        cache: "no-store",
       });
       return await request.json();
     } catch (error) {

@@ -1,5 +1,6 @@
 import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import GoogleProvider from "next-auth/providers/google";
 
 export const authOptions: NextAuthOptions = {
   pages: {
@@ -17,7 +18,7 @@ export const authOptions: NextAuthOptions = {
       authorize: async (credentials, _req) => {
         try {
           console.log("CREDS", credentials);
-          
+
           if (
             !credentials?.access_token ||
             !credentials?.refresh_token ||
@@ -43,16 +44,30 @@ export const authOptions: NextAuthOptions = {
         }
       },
     }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID as string,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+    }),
   ],
 
   secret: process.env.NEXTAUTH_SECRET,
-
+  
   session: {
     strategy: "jwt",
   },
 
   callbacks: {
-    async jwt({ token, user }: { token: any; user: any }) {
+    async jwt({
+      token,
+      user,
+      // account,
+    }: {
+      token: any;
+      user: any;
+      // account: any;
+    }) {
+      // console.log("ACC", account, user);
+
       if (user) {
         token.name = user.name;
         token.email = user.email;

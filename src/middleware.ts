@@ -4,9 +4,10 @@ import { getToken } from "next-auth/jwt";
 
 export const middleware = async (req: any) => {
   const currentUser = await getToken({ req });
- 
+  console.log("c", currentUser);
+
   if (
-    currentUser?.accessToken &&
+    currentUser &&
     (req.nextUrl.pathname.startsWith("/login-as") ||
       req.nextUrl.pathname.startsWith("/login") ||
       req.nextUrl.pathname.startsWith("/change-password") ||

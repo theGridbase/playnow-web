@@ -6,6 +6,7 @@ import Icon from "../ui/Icon/Icon";
 import { NextStepType } from "./LoginStepForm";
 import { initiateLogin } from "./action";
 import styles from "@/styles/components/loginstepform.module.scss";
+import { signIn, signOut } from "next-auth/react";
 
 interface Props {
   next: (args: NextStepType) => void;
@@ -19,6 +20,11 @@ type FieldType = {
 
 export default function InitiateLogin({ next }: Props) {
   const [loading, setLoading] = useState(false);
+
+  const handleSocialLogin = async () => {
+    signIn("google");
+  };
+
   const onFinish = async (d: FieldType) => {
     setLoading(true);
     const { remember, ...rest } = d;
@@ -100,6 +106,7 @@ export default function InitiateLogin({ next }: Props) {
         block
         icon={<Icon name="google.svg" size="24" />}
         className="mb-large"
+        onClick={() => handleSocialLogin()}
       >
         Sign in with Google
       </Button>

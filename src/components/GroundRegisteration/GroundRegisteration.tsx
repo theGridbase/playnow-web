@@ -14,8 +14,10 @@ import AddSlots from "./AddSlots";
 import AddBankDetails from "./AddBankDetails";
 import { createGround } from "./action";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default function GroundRegisteration() {
+  const router = useRouter();
   const { data: session } = useSession();
   const [currentStep, setCurrentStep] = useState(1);
   const [totalSteps, setTotalSteps] = useState(8);
@@ -36,6 +38,7 @@ export default function GroundRegisteration() {
         name: groundData.title,
       });
       message.success("Ground created successfully");
+      router.replace("/owner");
       return;
     }
     setCurrentStep((prev) => prev + 1);
