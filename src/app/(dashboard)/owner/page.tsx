@@ -1,3 +1,4 @@
+import Header from "@/components/Header/Header";
 import LogoutButton from "@/components/LogoutButton/LogoutButton";
 import Link from "next/link";
 
@@ -5,6 +6,7 @@ import Link from "next/link";
 export default function page() {
   return (
     <div>
+      <Header/>
       <h1 style={{ textAlign: "center" }}>Owner registration</h1>
       <div
         style={{

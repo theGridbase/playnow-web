@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { getAllAmenities } from "./action";
-import { Button, Flex } from "antd";
+import { Button, Empty, Flex } from "antd";
 import Tile from "../Tile/Tile";
 import styles from "@/styles/components/ground.registration.module.scss";
 
@@ -52,7 +52,8 @@ function AddAmenities({ handleNext }: Props) {
       <h1>Tell guests what your place has to offer</h1>
       <p>You can add more amenities after you publish your listing</p>
       <h2 className="mb-small">What about these guests favourites</h2>
-      <Flex
+      {amenitiesUserFav.length === 0 && <Empty description="no standout amenities" />}
+      {amenitiesUserFav.length > 0 && <Flex
         className="mb-large"
         align="center"
         justify="flex-start"
@@ -70,10 +71,11 @@ function AddAmenities({ handleNext }: Props) {
             />
           );
         })}
-      </Flex>
+      </Flex>}
 
       <h2 className="mb-small">Do you have any standout amenities</h2>
-      <Flex align="center" justify="space-evenly" gap={20} wrap>
+      {amenitiesStandout.length === 0 && <Empty description="no standout amenities" />}
+      {amenitiesStandout.length > 0 && <Flex align="center" justify="space-evenly" gap={20} wrap>
         {amenitiesStandout.map((amenity: any) => {
           return (
             <Tile
@@ -85,7 +87,7 @@ function AddAmenities({ handleNext }: Props) {
             />
           );
         })}
-      </Flex>
+      </Flex>}
     </div>
   );
 }
