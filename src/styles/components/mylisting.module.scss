@@ -1,0 +1,57 @@
+.listingsContainer {
+    padding-top: 37px;
+    padding-right: 160px;
+    padding-left: 160px;
+    padding-bottom: 160px;
+  
+    h1 {
+      color: #000;
+      font-size: 31.654px;
+      font-weight: 700;
+    }
+  
+    p {
+      color: #655F5F;
+      font-size: 18.465px;
+      font-weight: 500;
+    }
+  }
+  
+  .imgwrapper {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+  
+  .listingCard {
+    border-radius: 8px;
+    overflow: hidden;
+
+   
+    padding: 0; // No padding
+    background-color: #fff; 
+    margin-top: 40px;
+  
+    .imgwrapper img {
+     
+      object-fit: cover;
+    }
+  
+    .cardContent {
+      padding: 10px;
+      text-align: left;
+  
+      h3 {
+        color: #000;
+        font-size: 18.465px;
+        font-weight: 500;
+      }
+  
+      p {
+        color: #989292;
+        font-size: 14px;
+        font-weight: 500;
+      }
+    }
+  }
+  

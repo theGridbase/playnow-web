@@ -47,7 +47,7 @@ export default function Footer() {
               variant="filled"
               placeholder="Enter your email address"
               size="large"
-              className="mb-small"
+              className="mb-small "
             />
             <Button block shape="round" type="default">
               Subscribe Now
