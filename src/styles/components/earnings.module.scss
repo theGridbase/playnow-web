@@ -1,0 +1,60 @@
+.earningsSummary {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background: #fff;
+  padding-left: 120px;
+  padding-top: 120px;
+  padding-right: 70px;
+
+  .leftPane {
+    flex: 2;
+    // margin-right: 20px
+   
+p{
+  color: #000;
+font-size: 41.748px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+
+
+span{
+  color: #8A8A8A;
+  font-size: 41.748px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+}
+    h3, h1 {
+      margin-bottom: 0;
+    }
+
+    .chart {
+      margin: 20px 0;
+    }
+
+    .status {
+      margin-top: 20px;
+
+      h5 {
+        margin-bottom: 5px;
+      }
+    }
+  }
+
+  .rightPane {
+    flex: 1;
+
+    .ant-card {
+      font-size: 14px;
+
+      .ant-table {
+        .ant-table-cell {
+          color: #555;
+        }
+      }
+    }
+  }
+}

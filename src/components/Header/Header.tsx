@@ -40,7 +40,7 @@ const Header: React.FC = () => {
           <Link href="/owner/reservations">Reservations</Link>
         </li>
         <li key="earnings">
-          <Link href="#">Earnings</Link>
+          <Link href="/owner/earnings">Earnings</Link>
         </li>
 
       </ul>
