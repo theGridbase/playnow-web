@@ -7,8 +7,7 @@ import { cookies } from "next/headers";
 export const registerUserRequest = async (body: IRegisterUser) => {
   const api = new PlayNowApi();
   const response = await api.registerUser(body);
-  console.log("RESPOMSE", response);
-
+  
   if (response?.code && response?.code !== 200) {
     return { status: 400, message: response.message, data: null };
   }

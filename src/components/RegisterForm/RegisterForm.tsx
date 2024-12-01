@@ -1,13 +1,5 @@
 "use client";
-import {
-  Button,
-  Checkbox,
-  Divider,
-  Form,
-  Input,
-  message,
-  Select,
-} from "antd";
+import { Button, Checkbox, Divider, Form, Input, message, Select } from "antd";
 import React, { useState } from "react";
 import Link from "next/link";
 import Icon from "../ui/Icon/Icon";
@@ -16,7 +8,7 @@ import { registerUserRequest } from "./action";
 import styles from "@/styles/components/loginstepform.module.scss";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
-import Downarrow from "../../../public/assets/icons/downarrow.svg"
+import Downarrow from "../../../public/assets/icons/downarrow.svg";
 import Image from "next/image";
 interface Props {}
 
@@ -69,20 +61,23 @@ export default function RegisterForm({}: Props) {
         onFinishFailed={onFinishFailed}
         autoComplete="off"
       >
-       <Form.Item<FieldType>
-  label="Full name"
-  name="fullName"
-  rules={[
-    { required: true, message: "Please input your full name!" },
-    {
-      pattern: /^[a-zA-Z\s]*$/,
-      message: "Full name cannot contain numbers, '@', or '.'!",
-    },
-  ]}
->
-  <Input placeholder="Full name" size="large" className={styles.signupinput} />
-</Form.Item>
-
+        <Form.Item<FieldType>
+          label="Full name"
+          name="fullName"
+          rules={[
+            { required: true, message: "Please input your full name!" },
+            {
+              pattern: /^[a-zA-Z\s]*$/,
+              message: "Full name cannot contain numbers, '@', or '.'!",
+            },
+          ]}
+        >
+          <Input
+            placeholder="Full name"
+            size="large"
+            className={styles.signupinput}
+          />
+        </Form.Item>
 
         <Form.Item<FieldType>
           label="Email address"
@@ -95,27 +90,35 @@ export default function RegisterForm({}: Props) {
             },
           ]}
         >
-          <Input placeholder="Email address" size="large" className={styles.signupinput} />
+          <Input
+            placeholder="Email address"
+            size="large"
+            className={styles.signupinput}
+          />
         </Form.Item>
 
-        <Form.Item<FieldType> 
-  label="Password"
-  name="password"
-  rules={[
-    { required: true, message: "Please input your password!" },
-    {
-      min: 8,
-      message: "Password must be at least 8 characters long!",
-    },
-    {
-      pattern: /^(?=.*[0-9])(?=.*[!@#$%^&*])/,
-      message: "Password must contain number and one special character!",
-    },
-  ]}
->
-  <Input.Password placeholder="Password" size="large" className={styles.signupinput} />
-</Form.Item>
-
+        <Form.Item<FieldType>
+          label="Password"
+          name="password"
+          rules={[
+            { required: true, message: "Please input your password!" },
+            {
+              min: 8,
+              message: "Password must be at least 8 characters long!",
+            },
+            {
+              pattern: /^(?=.*[0-9])(?=.*[!@#$%^&*])/,
+              message:
+                "Password must contain one number and one special character!",
+            },
+          ]}
+        >
+          <Input.Password
+            placeholder="Password"
+            size="large"
+            className={styles.signupinput}
+          />
+        </Form.Item>
 
         <Form.Item
           label="Register as"
@@ -126,10 +129,7 @@ export default function RegisterForm({}: Props) {
           <Select
             size="large"
             placeholder="Register as"
-            suffixIcon={<Icon size="12" name="downarrow.svg"/>}
-
-
-           
+            suffixIcon={<Icon size="12" name="downarrow.svg" />}
             options={[{ value: "owner", label: "Owner" }]}
           />
         </Form.Item>
@@ -141,9 +141,7 @@ export default function RegisterForm({}: Props) {
             { required: true, message: "Please accept terms and conditions" },
           ]}
         >
-          <Checkbox >
-            I accept all the terms and conditions
-          </Checkbox>
+          <Checkbox>I accept all the terms and conditions</Checkbox>
         </Form.Item>
 
         <Form.Item label={null}>

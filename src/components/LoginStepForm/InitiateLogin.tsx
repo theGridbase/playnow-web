@@ -59,7 +59,13 @@ export default function InitiateLogin({ next }: Props) {
           label="Email address"
           name="email"
           className={styles.formItem}
-          rules={[{ required: true, message: "Please input your email!" }]}
+          rules={[
+            {
+              required: true,
+              message: "Please input your email!",
+              type: "email",
+            },
+          ]}
         >
           <Input
             placeholder="Email address"
@@ -72,7 +78,18 @@ export default function InitiateLogin({ next }: Props) {
           label="Password"
           name="password"
           className={styles.formItem}
-          rules={[{ required: true, message: "Please input your password!" }]}
+          rules={[
+            { required: true, message: "Please input your password!" },
+            {
+              min: 8,
+              message: "Password must be at least 8 characters long!",
+            },
+            {
+              pattern: /^(?=.*[0-9])(?=.*[!@#$%^&*])/,
+              message:
+                "Password must contain one number and one special character!",
+            },
+          ]}
         >
           <Input.Password
             placeholder="password"
