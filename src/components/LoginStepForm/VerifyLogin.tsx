@@ -100,7 +100,7 @@ export default function VerifyLogin({ userData, next, prev }: Props) {
         </Flex>
 
         <Flex justify="center" className="mb-middle">
-          <Button type="text" className={styles.resendBtn} disabled={loading}>
+          <Button type="text" className={styles.resendBtn} disabled={loading} onClick={prev}>
             Change Email
           </Button>
         </Flex>

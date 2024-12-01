@@ -43,7 +43,7 @@ export default function RegisterForm({}: Props) {
         return;
       }
       message.success("registeration successfull");
-      router.replace("/login-as");
+      router.replace("/login");
     } catch (error) {
       message.error("something went wrong");
       setLoading(false);

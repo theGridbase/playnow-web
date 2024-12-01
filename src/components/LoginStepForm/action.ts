@@ -2,8 +2,19 @@
 
 import { ILoginInitiate, IProfile, IVerifyLogin } from "@/app/_lib/interfaces";
 import { PlayNowApi } from "@/utils/playnow/api";
+import { cookies } from "next/headers";
 
 type NewProfileBody = Omit<IProfile, "user">;
+
+export const getVerifyCookie = async () => {
+  const response = cookies().get("VERIFY_ACCOUNT");
+
+  if (!response) {
+    return { status: 400, message: "not found", data: null };
+  }
+
+  return { status: 200, message: "success", data: response };
+};
 
 export const initiateLogin = async (body: ILoginInitiate) => {
   const api = new PlayNowApi();
