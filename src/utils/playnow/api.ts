@@ -12,6 +12,18 @@ export class PlayNowApi {
     this._baseURl = new URL(`${process.env.NEXT_PUBLIC_API_URL}`);
   }
 
+  public async getServerSession() {
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/token`,
+        { method: "GET" , credentials : "include"}
+      );
+      return await response.json();
+    } catch (error) {
+      console.error("Err TOKEN", error);
+    }
+  }
+
   public async userLogin(step: loginStep, body: ILoginInitiate) {
     try {
       const url = new URL(this._baseURl.toString());

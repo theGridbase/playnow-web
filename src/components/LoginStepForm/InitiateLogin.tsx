@@ -20,7 +20,7 @@ type FieldType = {
 };
 
 export default function InitiateLogin({ next }: Props) {
-  const {openNotification} = useNotification()
+  const { openNotification } = useNotification();
   const [loading, setLoading] = useState(false);
 
   const handleSocialLogin = async () => {
@@ -33,7 +33,11 @@ export default function InitiateLogin({ next }: Props) {
     const response = await initiateLogin(rest);
     setLoading(false);
     if (response.status !== 200) {
-      openNotification("success", "Success!", response.message || "success")
+      openNotification(
+        "error",
+        "Error!",
+        response.message || "invalid credentials"
+      );
       return;
     }
 

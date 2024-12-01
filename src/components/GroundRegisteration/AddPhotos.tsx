@@ -1,6 +1,6 @@
 import { Button, Flex } from "antd";
 import { InboxOutlined } from "@ant-design/icons";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import type { UploadProps } from "antd";
 import { message, Upload } from "antd";
 import styles from "@/styles/components/ground.registration.module.scss";
@@ -16,8 +16,12 @@ export default function AddPhotos({ handleNext }: Props) {
   const [fileList, setFileList] = useState<any[]>([]);
   const [imageBase64, setImageBase64] = useState<string[]>([]); // Store base64 images
   const [isButtonDisabled, setIsButtonDisabled] = useState(true); // Button disabled state
-  const {openNotification} = useNotification()
+  const { openNotification } = useNotification();
 
+  useEffect(() => {
+    console.log(imageBase64);
+    
+  }, [imageBase64])
 
   // Upload configuration
   const props: UploadProps = {
@@ -25,9 +29,9 @@ export default function AddPhotos({ handleNext }: Props) {
     multiple: true,
     beforeUpload: (file) => {
       // Restrict file size (if required) or type (e.g., image only)
-      const isImage = file.type.startsWith("image/");
+      const isImage = file.type === "image/png" || file.type === "image/jpeg";
       if (!isImage) {
-        openNotification("error" , "Error!" , "You can only upload image files!")
+        openNotification("error", "Error!", "You can only upload image .png or .jpeg files!");
       }
       return isImage;
     },
@@ -38,11 +42,15 @@ export default function AddPhotos({ handleNext }: Props) {
         newFileList.shift();
       }
       setFileList(newFileList);
-      
+
       if (file.status === "done") {
-        openNotification("success" , "Success!" , `${file.name} file uploaded successfully.`)
+        openNotification(
+          "success",
+          "Success!",
+          `${file.name} file uploaded successfully.`
+        );
       } else if (file.status === "error") {
-        openNotification("error" , "Error!" , `${file.name} file upload failed.`)
+        openNotification("error", "Error!", `${file.name} file upload failed.`);
       }
 
       // Convert to base64 when an image is uploaded
@@ -80,12 +88,12 @@ export default function AddPhotos({ handleNext }: Props) {
       <h1 className={styles.screenName}>Add some photos of your place</h1>
 
       <div className={styles.uploader}>
-        <Dragger {...props} fileList={fileList} >
-          <div style={{margin : "100px 0"}}>
-          <p className="ant-upload-drag-icon">
-            <InboxOutlined />
-          </p>
-          <Button type="default">Add Photos</Button>
+        <Dragger {...props} fileList={fileList}>
+          <div style={{ margin: "100px 0" }}>
+            <p className="ant-upload-drag-icon">
+              <InboxOutlined />
+            </p>
+            <Button type="default">Add Photos</Button>
           </div>
         </Dragger>
       </div>

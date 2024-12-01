@@ -4,7 +4,7 @@ import { getToken } from "next-auth/jwt";
 
 export const middleware = async (req: any) => {
   const currentUser = await getToken({ req });
-  console.log("c", currentUser);
+ 
 
   if (
     currentUser &&

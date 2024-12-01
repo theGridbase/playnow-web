@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { message, Progress } from "antd";
 import colorVariables from "@/styles/variables.module.scss";
 import styles from "@/styles/components/ground.registration.module.scss";
@@ -25,22 +25,29 @@ export default function GroundRegisteration() {
   const [totalSteps, setTotalSteps] = useState(8);
   const [groundData, setGroundData] = useState<Record<string, any>>({});
 
-
   // Calculate progress percentage dynamically
   const progressPercent = (currentStep / totalSteps) * 100;
 
   const handleNext = async (d: Record<string, any>) => {
     setGroundData((prev) => ({ ...prev, ...d }));
     if (currentStep === 9) {
-      const response = await createGround({
-        user: session?.user?.profile?.user,
-        name: groundData.title,
-      });
-      openNotification("success", "Succes!", "Ground created successfully")
-      router.replace("/owner");
       return;
     }
     setCurrentStep((prev) => prev + 1);
+  };
+
+  const handleSaveGround = async (d: Record<string, any>) => {
+    const response:any = await createGround({
+      ...groundData,
+      ...d,
+      email: session?.user?.email,
+    });
+    if (response.status !== 201) {
+      openNotification("error", "Error!", "something went wrong");
+      return;
+    }
+
+    router.replace("/owner");
   };
 
   return (
@@ -66,7 +73,9 @@ export default function GroundRegisteration() {
       {currentStep === 6 && <AddPlacePrice handleNext={handleNext} />}
       {currentStep === 7 && <AddAmenities handleNext={handleNext} />}
       {currentStep === 8 && <AddSlots handleNext={handleNext} />}
-      {currentStep === 9 && <AddBankDetails handleNext={handleNext} />}
+      {currentStep === 9 && (
+        <AddBankDetails handleNext={handleNext} save={handleSaveGround} />
+      )}
     </div>
   );
   4;

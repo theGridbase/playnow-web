@@ -50,8 +50,9 @@ export default function ChoosePlaceTypes({ handleNext }: Props) {
       </h1>
 
       <Flex align="center" justify="flex-start" gap={20} wrap>
-        {placeTypes.map((place) => (
+        {placeTypes.map((place, idx) => (
           <Tile
+            key={idx}
             {...place}
             onClick={handleTileSelect}
             isSelected={selectedPlaceTypes.includes(place._id)}
