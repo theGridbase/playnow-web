@@ -8,7 +8,7 @@ export default function LogoutButton() {
     await signOut({ callbackUrl: "/login-as" });
   };
   return (
-    <Button type="primary" size="large" shape="round" onClick={handleClick}>
+    <Button style={{width:"80px",height:"30px !important"}} onClick={handleClick}>
       Logout
     </Button>
   );
