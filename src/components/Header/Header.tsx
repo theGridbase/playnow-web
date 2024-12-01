@@ -33,20 +33,16 @@ const Header: React.FC = () => {
           <Link href="#">Today</Link>
         </li>
         <li key="listings">
-          <Link href="/Mylisting">Listings</Link>
+          <Link href="/owner/my-listing">Listings</Link>
         </li>
-        <li key="messages">
-          <Link href="#">Messages</Link>
-        </li>
+
         <li key="reservations">
-          <Link href="#">Reservations</Link>
+          <Link href="/owner/reservations">Reservations</Link>
         </li>
         <li key="earnings">
           <Link href="#">Earnings</Link>
         </li>
-        <li key="register-ground">
-          <Link href="/owner/ground-register">Register Ground</Link>
-        </li>
+
       </ul>
 
       <div className={styles.actions}>

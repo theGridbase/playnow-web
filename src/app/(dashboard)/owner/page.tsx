@@ -1,6 +1,6 @@
 import Header from "@/components/Header/Header";
 import LogoutButton from "@/components/LogoutButton/LogoutButton";
-import MyListings from "@/components/Mylisting/Mylisting";
+import MyListings from "@/app/(dashboard)/owner/my-listing/page";
 import Link from "next/link";
 
 
@@ -20,7 +20,7 @@ export default function page() {
         <Link href={"/owner/ground-register"}>Register Ground</Link>
         <LogoutButton />
       </div> */}
-      <MyListings/>
+      
     </div>
   );
 }
