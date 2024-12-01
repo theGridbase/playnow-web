@@ -7,7 +7,7 @@ export default function page() {
   return (
     <div>
       <Header/>
-      <h1 style={{ textAlign: "center" }}>Owner registration</h1>
+      {/* <h1 style={{ textAlign: "center" }}>Owner registration</h1>
       <div
         style={{
           display: "flex",
@@ -18,7 +18,7 @@ export default function page() {
       >
         <Link href={"/owner/ground-register"}>Register Ground</Link>
         <LogoutButton />
-      </div>
+      </div> */}
     </div>
   );
 }
