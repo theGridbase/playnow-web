@@ -1,2 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-<svg width="800px" height="800px" viewBox="0 0 24 24" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:none;stroke:#020202;stroke-miterlimit:10;stroke-width:1.91px;}</style></defs><rect class="cls-1" x="1.48" y="1.5" width="10.52" height="20.09"/><rect class="cls-1" x="12" y="1.5" width="10.52" height="20.09"/><line class="cls-1" x1="3.39" y1="5.33" x2="10.09" y2="5.33"/><line class="cls-1" x1="3.39" y1="9.15" x2="10.09" y2="9.15"/><line class="cls-1" x1="13.91" y1="5.33" x2="20.61" y2="5.33"/><line class="cls-1" x1="13.91" y1="9.15" x2="20.61" y2="9.15"/><line class="cls-1" x1="8.17" y1="12.98" x2="10.09" y2="12.98"/><line class="cls-1" x1="18.7" y1="12.98" x2="20.61" y2="12.98"/><line class="cls-1" x1="3.39" y1="21.59" x2="3.39" y2="23.5"/><line class="cls-1" x1="10.09" y1="21.59" x2="10.09" y2="23.5"/><line class="cls-1" x1="13.91" y1="21.59" x2="13.91" y2="23.5"/><line class="cls-1" x1="20.61" y1="21.59" x2="20.61" y2="23.5"/></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+<svg fill="#000000" width="800px" height="800px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+<title>keys</title>
+<path d="M0 26.016q0 2.496 1.76 4.224t4.256 1.76h1.984v-12q-0.832 0-1.408-0.576t-0.576-1.408v-18.016q-2.496 0-4.256 1.76t-1.76 4.256v20zM10.016 32h12v-12q-0.832 0-1.44-0.576t-0.576-1.408v-18.016h-8v18.016q0 0.832-0.576 1.408t-1.408 0.576v12zM24 32h2.016q2.464 0 4.224-1.76t1.76-4.224v-20q0-2.496-1.76-4.256t-4.224-1.76v18.016q0 0.832-0.608 1.408t-1.408 0.576v12z"></path>
+</svg>
