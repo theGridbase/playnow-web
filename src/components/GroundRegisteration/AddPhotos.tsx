@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import type { UploadProps } from "antd";
 import { message, Upload } from "antd";
 import styles from "@/styles/components/ground.registration.module.scss";
+import { useNotification } from "../context/NotificationContext/NotificationContextProvider";
 
 const { Dragger } = Upload;
 
@@ -15,6 +16,8 @@ export default function AddPhotos({ handleNext }: Props) {
   const [fileList, setFileList] = useState<any[]>([]);
   const [imageBase64, setImageBase64] = useState<string[]>([]); // Store base64 images
   const [isButtonDisabled, setIsButtonDisabled] = useState(true); // Button disabled state
+  const {openNotification} = useNotification()
+
 
   // Upload configuration
   const props: UploadProps = {
@@ -24,7 +27,7 @@ export default function AddPhotos({ handleNext }: Props) {
       // Restrict file size (if required) or type (e.g., image only)
       const isImage = file.type.startsWith("image/");
       if (!isImage) {
-        message.error("You can only upload image files!");
+        openNotification("error" , "Error!" , "You can only upload image files!")
       }
       return isImage;
     },
@@ -35,11 +38,11 @@ export default function AddPhotos({ handleNext }: Props) {
         newFileList.shift();
       }
       setFileList(newFileList);
-
+      
       if (file.status === "done") {
-        message.success(`${file.name} file uploaded successfully.`);
+        openNotification("success" , "Success!" , `${file.name} file uploaded successfully.`)
       } else if (file.status === "error") {
-        message.error(`${file.name} file upload failed.`);
+        openNotification("error" , "Error!" , `${file.name} file upload failed.`)
       }
 
       // Convert to base64 when an image is uploaded

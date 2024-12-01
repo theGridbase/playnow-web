@@ -4,6 +4,7 @@ import { AntdRegistry } from "@ant-design/nextjs-registry";
 import "@/styles/globals.scss";
 import ThemeProvider from "@/components/Providers/ThemeProvider/ThemeProvider";
 import AuthProvider from "@/components/Providers/AuthProvider/AuthProvider";
+import { NotificationProvider } from "@/components/context/NotificationContext/NotificationContextProvider";
 
 const poppins = Poppins({ subsets: ["latin"], weight: "400" });
 
@@ -22,7 +23,9 @@ export default function RootLayout({
       <body className={poppins.className}>
         <AntdRegistry>
           <ThemeProvider>
-            <AuthProvider>{children}</AuthProvider>
+            <AuthProvider>
+              <NotificationProvider>{children}</NotificationProvider>
+            </AuthProvider>
           </ThemeProvider>
         </AntdRegistry>
       </body>

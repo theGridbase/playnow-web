@@ -8,6 +8,7 @@ import { signIn } from "next-auth/react";
 import { redirect } from "next/navigation";
 import Icon from "../ui/Icon/Icon";
 import CustomImage from "../ui/CustomImage/CustomImage";
+import { useNotification } from "../context/NotificationContext/NotificationContextProvider";
 
 interface Props {
   userData: IUser;
@@ -19,6 +20,7 @@ type FieldType = {
 };
 
 export default function VerifyLogin({ userData, next, prev }: Props) {
+  const {openNotification} = useNotification()
   const [loading, setLoading] = useState(false);
 
   const handleResendOtp = async () => {
@@ -38,10 +40,10 @@ export default function VerifyLogin({ userData, next, prev }: Props) {
     setLoading(false);
 
     if (response.status !== 200) {
-      message.error("verification failed");
+      openNotification("error" ,"Error!" , "verification failed")
       return;
     }
-
+    
     if (response.data) {
       const response2 = await signIn("credentials", {
         user: JSON.stringify(userData),
@@ -50,13 +52,13 @@ export default function VerifyLogin({ userData, next, prev }: Props) {
         redirect: false,
       });
       if (response2?.status === 200) {
-        message.success("successfull login");
+        openNotification("success" ,"Success!" , "successfull login")
         window.location.reload();
       }
       return;
     }
-
-    message.success("verified success");
+    
+    openNotification("success" ,"Success!" , "verified success")
     next({});
   };
   const onFinishFailed = () => {};

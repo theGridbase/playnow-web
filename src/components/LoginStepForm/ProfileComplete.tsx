@@ -6,6 +6,7 @@ import { IUser, ProfileExtras } from "@/app/_lib/interfaces";
 import { signIn } from "next-auth/react";
 import { redirect } from "next/navigation";
 import Icon from "../ui/Icon/Icon";
+import { useNotification } from "../context/NotificationContext/NotificationContextProvider";
 type FieldType = {
   profileImage: string;
   firstName: string;
@@ -43,6 +44,7 @@ const beforeUpload = (file: File) => {
 };
 
 export default function ProfileComplete({ userData }: Props) {
+  const { openNotification } = useNotification();
   const [loading, setLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [profleExtras, setProfileExtras] = useState<ProfileExtras>({
@@ -73,7 +75,7 @@ export default function ProfileComplete({ userData }: Props) {
     setLoading(true);
     const { profileImage, ...rest } = d;
     const payload = {
-      email : userData.email,
+      email: userData.email,
       profileImage: "N/A",
       ...rest,
     };
@@ -82,7 +84,7 @@ export default function ProfileComplete({ userData }: Props) {
     const response = await createInitialProfile(payload);
     if (response.status !== 200) {
       setLoading(false);
-      message.error(response.message);
+      openNotification("error", "Error!", response.message);
       return;
     }
     const response2 = await signIn("credentials", {
@@ -93,11 +95,11 @@ export default function ProfileComplete({ userData }: Props) {
     });
     setLoading(false);
     if (response2?.status === 200) {
-      message.success("successfull login");
+      openNotification("success", "Success!", "successfull login");
       window.location.reload();
-      return
+      return;
     }
-    message.error("Inavlid credentials");
+    openNotification("error", "Error!", "Inavlid credentials");
   };
 
   return (
@@ -158,7 +160,11 @@ export default function ProfileComplete({ userData }: Props) {
             ]}
             style={{ flex: 1 }}
           >
-            <Input placeholder="First Name" size="large" className={styles.signupinput} />
+            <Input
+              placeholder="First Name"
+              size="large"
+              className={styles.signupinput}
+            />
           </Form.Item>
           <Form.Item<FieldType>
             label="Last Name"
@@ -168,7 +174,11 @@ export default function ProfileComplete({ userData }: Props) {
             ]}
             style={{ flex: 1 }}
           >
-            <Input placeholder="Last Name" size="large"  className={styles.signupinput} />
+            <Input
+              placeholder="Last Name"
+              size="large"
+              className={styles.signupinput}
+            />
           </Form.Item>
         </Flex>
         <Flex align="center" justify="space-between" gap={10} wrap>
@@ -181,8 +191,7 @@ export default function ProfileComplete({ userData }: Props) {
             <Select
               size="large"
               placeholder="Country"
-              suffixIcon={<Icon size="12" name="downarrow.svg"/>}
-
+              suffixIcon={<Icon size="12" name="downarrow.svg" />}
               options={profleExtras?.countries.map((e) => ({
                 value: e,
                 label: e.toLowerCase(),
@@ -198,8 +207,7 @@ export default function ProfileComplete({ userData }: Props) {
             <Select
               size="large"
               placeholder="City"
-              suffixIcon={<Icon size="12" name="downarrow.svg"/>}
-
+              suffixIcon={<Icon size="12" name="downarrow.svg" />}
               options={profleExtras?.cities.map((e) => ({
                 value: e,
                 label: e.toLowerCase(),
@@ -217,8 +225,7 @@ export default function ProfileComplete({ userData }: Props) {
             <Select
               size="large"
               placeholder="Gender"
-              suffixIcon={<Icon size="12" name="downarrow.svg"/>}
-
+              suffixIcon={<Icon size="12" name="downarrow.svg" />}
               options={profleExtras?.genders.map((e) => ({
                 value: e,
                 label: e.toLowerCase(),
@@ -236,8 +243,7 @@ export default function ProfileComplete({ userData }: Props) {
             <Select
               size="large"
               mode="multiple"
-              suffixIcon={<Icon size="12" name="downarrow.svg"/>}
-
+              suffixIcon={<Icon size="12" name="downarrow.svg" />}
               placeholder="Interests"
               options={profleExtras?.interests.map((e) => ({
                 value: e,

@@ -6,6 +6,7 @@ import Icon from "../ui/Icon/Icon";
 import Link from "next/link";
 import { forgetPasswordRequest } from "./action";
 import { useState } from "react";
+import { useNotification } from "../context/NotificationContext/NotificationContextProvider";
 
 type FieldType = {
   email: string;
@@ -13,16 +14,26 @@ type FieldType = {
 
 export default function ForgetPasswordForm() {
   const [laoding, setLoading] = useState(false);
+  const { openNotification } = useNotification();
+
   const onFinish = async (d: FieldType) => {
     setLoading(true);
     const response = await forgetPasswordRequest(d.email);
     setLoading(false);
     if (response.status !== 200) {
-      message.error(response.message || "something went wrong");
+      openNotification(
+        "error",
+        "Error!",
+        response.message || "something went wrong"
+      );
       return;
     }
 
-    message.success("Verifification has beend send to your email!");
+    openNotification(
+      "success",
+      "Success!",
+      "Verifification has beend send to your email!"
+    );
   };
   const onFinishFailed = () => {};
   return (

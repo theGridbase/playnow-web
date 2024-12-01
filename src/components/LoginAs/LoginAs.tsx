@@ -3,7 +3,11 @@ import { Button, Divider, Flex } from "antd";
 import { useRouter } from "next/navigation";
 import React from "react";
 import styles from "@/styles/components/loginas.component.module.scss";
-import { GoogleOutlined,FacebookOutlined,FacebookFilled } from '@ant-design/icons';
+import {
+  GoogleOutlined,
+  FacebookOutlined,
+  FacebookFilled,
+} from "@ant-design/icons";
 type loginType = "owner" | "customer" | "social";
 
 export default function LoginAs() {
@@ -41,17 +45,16 @@ export default function LoginAs() {
       <Divider>or</Divider>
 
       <Flex align="center" justify="start" gap={10}>
-     
-<Button
-  type="primary"
-  shape="round"
-  size="large"
-  className={styles.socialBtn}
-  onClick={() => handleClick("social")}
-  icon={<GoogleOutlined />}
->
-  Login With Google
-</Button>
+        <Button
+          type="primary"
+          shape="round"
+          size="large"
+          className={styles.socialBtn}
+          onClick={() => handleClick("social")}
+          icon={<GoogleOutlined />}
+        >
+          Login With Google
+        </Button>
 
         <Button
           type="primary"
@@ -60,6 +63,7 @@ export default function LoginAs() {
           className={`${styles.socialBtn} ${styles.facebookBtn}`}
           onClick={() => handleClick("social")}
           icon={<FacebookFilled />} // Add Google icon here
+          disabled
         >
           Login With Facebook
         </Button>

@@ -7,6 +7,7 @@ import { Button, Empty, Form, Input, message } from "antd";
 import { IChangePasswordProps } from "@/app/_lib/interfaces";
 import { changePasswordRequest } from "./action";
 import { signIn } from "next-auth/react";
+import { useNotification } from "../context/NotificationContext/NotificationContextProvider";
 
 type FieldType = {
   password: string;
@@ -15,12 +16,14 @@ type FieldType = {
 
 export default function ChangePasswordForm({ token }: IChangePasswordProps) {
   const [loading, setLoading] = useState(false);
+  const { openNotification } = useNotification();
+
   const onFinish = async (d: FieldType) => {
     setLoading(true);
     const response = await changePasswordRequest(token, d.password);
     if (response.status !== 200) {
       setLoading(false);
-      message.error(response.message);
+      openNotification("error", "Error!", response.message);
       return;
     }
 
@@ -33,7 +36,7 @@ export default function ChangePasswordForm({ token }: IChangePasswordProps) {
       });
       setLoading(false);
       if (response2?.status === 200) {
-        message.success("successfull login");
+        openNotification("success", "Success!", "successfull login");
         window.location.reload();
       }
       return;

@@ -15,17 +15,16 @@ import AddBankDetails from "./AddBankDetails";
 import { createGround } from "./action";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { useNotification } from "../context/NotificationContext/NotificationContextProvider";
 
 export default function GroundRegisteration() {
+  const { openNotification } = useNotification();
   const router = useRouter();
   const { data: session } = useSession();
   const [currentStep, setCurrentStep] = useState(1);
   const [totalSteps, setTotalSteps] = useState(8);
   const [groundData, setGroundData] = useState<Record<string, any>>({});
 
-  useEffect(() => {
-    console.log(groundData);
-  }, [groundData]);
 
   // Calculate progress percentage dynamically
   const progressPercent = (currentStep / totalSteps) * 100;
@@ -37,7 +36,7 @@ export default function GroundRegisteration() {
         user: session?.user?.profile?.user,
         name: groundData.title,
       });
-      message.success("Ground created successfully");
+      openNotification("success", "Succes!", "Ground created successfully")
       router.replace("/owner");
       return;
     }

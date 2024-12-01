@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Flex, Form, Switch, TimePicker, message } from "antd";
 import styles from "@/styles/components/ground.registration.module.scss";
+import { useNotification } from "../context/NotificationContext/NotificationContextProvider";
 
 const daysOfWeek = [
   "Monday",
@@ -24,6 +25,7 @@ type SlotType = {
 };
 
 export default function AddSlots({ handleNext }: Props) {
+  const { openNotification } = useNotification();
   const [slots, setSlots] = useState<SlotType>(
     daysOfWeek.reduce(
       (acc, day) => ({
@@ -99,16 +101,14 @@ export default function AddSlots({ handleNext }: Props) {
       for (const slot of times) {
         // Ensure all active slots have both start and end times
         if (!slot.start || !slot.end) {
-          message.error(
-            `Please ensure all slots for ${day} have both start and end times.`
-          );
+          openNotification("error", "Error!", `Please ensure all slots for ${day} have both start and end times.`)
           return false;
         }
       }
     }
-
+    
     if (!hasValidSlots) {
-      message.error("Please configure slots for at least one day.");
+      openNotification("error", "Error!", "Please configure slots for at least one day.")
       return false;
     }
 

@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import Downarrow from "../../../public/assets/icons/downarrow.svg";
 import Image from "next/image";
+import { useNotification } from "../context/NotificationContext/NotificationContextProvider";
 interface Props {}
 
 interface FieldType extends IRegisterUser {
@@ -19,6 +20,7 @@ interface FieldType extends IRegisterUser {
 export default function RegisterForm({}: Props) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const { openNotification } = useNotification();
 
   const onFinish = async (d: FieldType) => {
     try {
@@ -26,19 +28,28 @@ export default function RegisterForm({}: Props) {
       const { terms, ...rest } = d;
       if (!terms) {
         setLoading(false);
-        message.error("Please accept the terms and conditions");
+        openNotification(
+          "error",
+          "Error!",
+          "please accept the terms and conditions"
+        );
         return;
       }
       const response = await registerUserRequest(rest);
       setLoading(false);
       if (response.status !== 200) {
-        message.error(response.message || "Something went wrong");
+        openNotification(
+          "error",
+          "Error!",
+          response.message || "Something went wrong"
+        );
         return;
       }
-      message.success("registeration successfull");
+
+      openNotification("success", "Success!", "registeration successfull");
       router.replace("/login");
     } catch (error) {
-      message.error("Something went wrong");
+      openNotification("error", "Error!", "Something went wrong");
       setLoading(false);
     }
   };

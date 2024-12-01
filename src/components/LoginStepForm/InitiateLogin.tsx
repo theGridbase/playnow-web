@@ -7,6 +7,7 @@ import { NextStepType } from "./LoginStepForm";
 import { initiateLogin } from "./action";
 import { signIn, signOut } from "next-auth/react";
 import styles from "@/styles/components/loginstepform.module.scss";
+import { useNotification } from "../context/NotificationContext/NotificationContextProvider";
 
 interface Props {
   next: (args: NextStepType) => void;
@@ -19,6 +20,7 @@ type FieldType = {
 };
 
 export default function InitiateLogin({ next }: Props) {
+  const {openNotification} = useNotification()
   const [loading, setLoading] = useState(false);
 
   const handleSocialLogin = async () => {
@@ -31,7 +33,7 @@ export default function InitiateLogin({ next }: Props) {
     const response = await initiateLogin(rest);
     setLoading(false);
     if (response.status !== 200) {
-      message.error(response.message);
+      openNotification("success", "Success!", response.message || "success")
       return;
     }
 
