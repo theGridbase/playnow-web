@@ -3,7 +3,6 @@ import {
   Button,
   Checkbox,
   Divider,
-  Flex,
   Form,
   Input,
   message,
@@ -17,7 +16,8 @@ import { registerUserRequest } from "./action";
 import styles from "@/styles/components/loginstepform.module.scss";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
-
+import Downarrow from "../../../public/assets/icons/downarrow.svg"
+import Image from "next/image";
 interface Props {}
 
 interface FieldType extends IRegisterUser {
@@ -27,29 +27,32 @@ interface FieldType extends IRegisterUser {
 export default function RegisterForm({}: Props) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+
   const onFinish = async (d: FieldType) => {
     try {
       setLoading(true);
       const { terms, ...rest } = d;
       if (!terms) {
         setLoading(false);
-        message.error("please accept the terms and conditions");
+        message.error("Please accept the terms and conditions");
         return;
       }
       const response = await registerUserRequest(rest);
       setLoading(false);
       if (response.status !== 200) {
-        message.error(response.message || "something went wrong");
+        message.error(response.message || "Something went wrong");
         return;
       }
       message.success("registeration successfull");
       router.replace("/login");
     } catch (error) {
-      message.error("something went wrong");
+      message.error("Something went wrong");
       setLoading(false);
     }
   };
+
   const onFinishFailed = () => {};
+
   return (
     <div className={styles.stepContainer}>
       <h1 className={styles.stepHeading}>Create Account</h1>
@@ -66,13 +69,20 @@ export default function RegisterForm({}: Props) {
         onFinishFailed={onFinishFailed}
         autoComplete="off"
       >
-        <Form.Item<FieldType>
-          label="Full name"
-          name="fullName"
-          rules={[{ required: true, message: "Please input your full name!" }]}
-        >
-          <Input placeholder="Full name" size="large" />
-        </Form.Item>
+       <Form.Item<FieldType>
+  label="Full name"
+  name="fullName"
+  rules={[
+    { required: true, message: "Please input your full name!" },
+    {
+      pattern: /^[a-zA-Z\s]*$/,
+      message: "Full name cannot contain numbers, '@', or '.'!",
+    },
+  ]}
+>
+  <Input placeholder="Full name" size="large" className={styles.signupinput} />
+</Form.Item>
+
 
         <Form.Item<FieldType>
           label="Email address"
@@ -85,43 +95,55 @@ export default function RegisterForm({}: Props) {
             },
           ]}
         >
-          <Input placeholder="Email address" size="large" />
+          <Input placeholder="Email address" size="large" className={styles.signupinput} />
         </Form.Item>
 
-        <Form.Item<FieldType>
-          label="Password"
-          name="password"
-          rules={[{ required: true, message: "Please input your password!" }]}
-        >
-          <Input.Password placeholder="password" size="large" />
-        </Form.Item>
+        <Form.Item<FieldType> 
+  label="Password"
+  name="password"
+  rules={[
+    { required: true, message: "Please input your password!" },
+    {
+      min: 8,
+      message: "Password must be at least 8 characters long!",
+    },
+    {
+      pattern: /^(?=.*[0-9])(?=.*[!@#$%^&*])/,
+      message: "Password must contain number and one special character!",
+    },
+  ]}
+>
+  <Input.Password placeholder="Password" size="large" className={styles.signupinput} />
+</Form.Item>
 
-        <Form.Item<FieldType>
+
+        <Form.Item
           label="Register as"
           name="role"
-          rules={[{ required: true, message: "Please input your selection!" }]}
+          rules={[{ required: true, message: "Please select your role!" }]}
           style={{ flex: 1 }}
         >
           <Select
             size="large"
-            placeholder="Login as"
-            options={[
-              // { value: "guest", label: "guest" },
-              // { value: "customer", label: "customer" },
-              { value: "owner", label: "owner" },
-            ]}
+            placeholder="Register as"
+            suffixIcon={<Icon size="12" name="downarrow.svg"/>}
+
+
+           
+            options={[{ value: "owner", label: "Owner" }]}
           />
         </Form.Item>
 
         <Form.Item<FieldType>
           name="terms"
           valuePropName="checked"
-          label={null}
           rules={[
-            { required: true, message: "Please accepts terms and conditions" },
+            { required: true, message: "Please accept terms and conditions" },
           ]}
         >
-          <Checkbox>I accept all the terms and conditions</Checkbox>
+          <Checkbox >
+            I accept all the terms and conditions
+          </Checkbox>
         </Form.Item>
 
         <Form.Item label={null}>
