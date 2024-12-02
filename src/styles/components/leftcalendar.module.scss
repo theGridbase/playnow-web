@@ -1,0 +1,93 @@
+.calendarContainer {
+  padding: 20px;
+  background-color: #E73725;
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+
+  .customCalendar {
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .eventList {
+    margin-top: 20px;
+
+    .eventDay {
+      background-color: #E73725;
+      color: white;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+
+      .mainWrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .eventDate {
+          color: var(--whitw, #FFF);
+          font-size: 13px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 20px; /* 153.846% */
+        }
+
+        .date {
+          color: var(--whitw, #FFF);
+          padding: 5px;
+          font-size: 13px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 20px; /* 153.846% */
+        }
+
+        .weatherdegree {
+          color: rgba(255, 255, 255, 0.70);
+          font-size: 13px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 20px; /* 153.846% */
+          margin-left: auto; /* Pushes weather degree to the right */
+        }
+      }
+
+      .groundtext {
+        color: var(--black, #010000);
+        display: inline-flex;
+        padding: 0px 6px;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 20px; /* 166.667% */
+        border-radius: 6px;
+        background: var(--whitw, #FFF);
+      }
+
+      .eventItem {
+        display: flex;
+        flex-direction: column;
+        padding: 5px 0;
+
+        .time {
+          color: #FFF;
+          font-size: 11px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 16px; /* 145.455% */
+          margin-top: 7px;
+        }
+
+        .eventDescription {
+          color: var(--white, #FFF);
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 16px; /* 133.333% */
+        }
+      }
+    }
+  }
+}
