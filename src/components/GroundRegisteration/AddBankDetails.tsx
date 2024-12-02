@@ -5,6 +5,7 @@ import CustomImage from "../ui/CustomImage/CustomImage";
 
 interface Props {
   handleNext: (d: Record<string, any>) => void;
+  save: (d: Record<string, any>) => void;
 }
 
 type FieldType = {
@@ -12,9 +13,10 @@ type FieldType = {
   accountNumber: string;
 };
 
-function AddBankDetails({ handleNext }: Props) {
+function AddBankDetails({ handleNext, save }: Props) {
   const onFinish = async (d: FieldType) => {
     handleNext({ bankDetails: d });
+    save({ bankDetails: d });
   };
 
   const onFinishFailed = (errorInfo: any) => {
@@ -32,7 +34,7 @@ function AddBankDetails({ handleNext }: Props) {
         autoComplete="off"
         className={styles.placeTitleForm}
       >
-        <Flex align="center" justify="flex-end" >
+        <Flex align="center" justify="flex-end">
           <Button
             type="default"
             shape="round"
@@ -50,7 +52,12 @@ function AddBankDetails({ handleNext }: Props) {
 
         <Flex align="stretch" justify="center" gap={30} wrap>
           <div className={styles.globeImage}>
-            <CustomImage name="globe.png" alt="globe" width={622} height={456} />
+            <CustomImage
+              name="globe.png"
+              alt="globe"
+              width={622}
+              height={456}
+            />
           </div>
           <div className={styles.bankInfo}>
             <h2>Payment details</h2>

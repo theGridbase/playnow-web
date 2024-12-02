@@ -36,9 +36,10 @@ export const getAllAmenities = async () => {
 };
 
 export const createGround = async (body: any) => {
+  
   const api = new PlayNowApi();
   const response = await api.createUserGround(body);
-
+  console.log(response)
   if (response?.code && response?.code !== 200) {
     return { status: 400, message: response.message, data: null };
   }
