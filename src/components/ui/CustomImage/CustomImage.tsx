@@ -11,7 +11,13 @@ interface CustomImageProps extends Omit<ImageProps, "src"> {
 export default function CustomImage(props: CustomImageProps) {
   const { name, ...rest } = props;
   const [imageType, setImageType] = useState<string>("");
+
   const imageFile: string | null = useMemo(() => {
+    if (name.startsWith("https")) {
+      // Directly return the URL if it starts with "https"
+      return name;
+    }
+
     if (name) {
       const fileExt = name.split(".").pop();
       const base: string = `/assets/images/`;
@@ -25,6 +31,12 @@ export default function CustomImage(props: CustomImageProps) {
     }
   }, [name]);
 
-  if (!imageFile || !imageType) return <Empty description="no image found" />;
-  return <Image src={imageFile} {...rest} />;
+  if (!imageFile) return <Empty description="no image found" />;
+
+  return (
+    <Image
+      src={imageFile}
+      {...rest}
+    />
+  );
 }

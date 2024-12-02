@@ -17,7 +17,7 @@ export const authOptions: NextAuthOptions = {
       },
       authorize: async (credentials, _req) => {
         try {
-          console.log("CREDS", credentials);
+          // console.log("CREDS", credentials);
 
           if (
             !credentials?.access_token ||

@@ -4,7 +4,6 @@ import { getToken } from "next-auth/jwt";
 
 export const middleware = async (req: any) => {
   const currentUser = await getToken({ req });
- 
 
   if (
     currentUser &&
@@ -25,9 +24,17 @@ export const middleware = async (req: any) => {
     return NextResponse.redirect(new URL("/login-as", req.url));
   }
 
-  return NextResponse.next();
+  // Pass the accessToken to headers
+  const response = NextResponse.next();
+  if (currentUser?.accessToken) {
+    response.headers.set("Authorization", `Bearer ${currentUser.accessToken}`);
+  }
+
+  return response;
 };
 
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|.*\\.png$).*)"],
+  // matcher: ["/((?!api|_next/static|_next/image|.*\\.png$).*)"],
+  matcher: ['/((?!api|_next/static|_next/image|assets|favicon.ico|logo.png|sw.js).*)']
+
 };

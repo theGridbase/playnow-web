@@ -12,6 +12,16 @@ const nextConfig = {
     // !! WARN !!
     ignoreBuildErrors: true,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        port: "",
+      },
+    ],
+    domains : ["res.cloudinary.com"]
+  },
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],
   },

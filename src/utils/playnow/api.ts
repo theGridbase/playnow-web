@@ -3,7 +3,7 @@ import {
   IRegisterUser,
   loginStep,
 } from "@/app/_lib/interfaces";
-import { getToken } from "next-auth/jwt";
+import { headers } from "next/headers";
 
 export class PlayNowApi {
   private _baseURl: URL;
@@ -12,13 +12,11 @@ export class PlayNowApi {
     this._baseURl = new URL(`${process.env.NEXT_PUBLIC_API_URL}`);
   }
 
-  public async getServerSession() {
+  public async getAuthHeader() {
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/api/token`,
-        { method: "GET" , credentials : "include"}
-      );
-      return await response.json();
+      const authorization = (await headers()).get("authorization");
+
+      return authorization;
     } catch (error) {
       console.error("Err TOKEN", error);
     }
@@ -173,6 +171,9 @@ export class PlayNowApi {
 
   public async createUserGround(body: any) {
     try {
+      if (!(await this.getAuthHeader())) {
+        throw new Error("No auth headers");
+      }
       const url = new URL(this._baseURl.toString());
       url.pathname = `${process.env.NEXT_PUBLIC_GROUND_API_VERSION}/ground`;
 
@@ -180,8 +181,32 @@ export class PlayNowApi {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: (await this.getAuthHeader()) || "",
         },
         body: JSON.stringify(body),
+      });
+      return await request.json();
+    } catch (error) {
+      console.error("Error", error);
+    }
+  }
+
+  public async getUserGrounds() {
+    try {
+      if (!(await this.getAuthHeader())) {
+        throw new Error("No auth headers");
+      }
+
+      const url = new URL(this._baseURl.toString());
+      url.pathname = `${process.env.NEXT_PUBLIC_GROUND_API_VERSION}/ground`;
+
+      const request = await fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: (await this.getAuthHeader()) || "",
+        },
+        cache: "no-store",
       });
       return await request.json();
     } catch (error) {

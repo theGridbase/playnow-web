@@ -68,5 +68,11 @@ export interface LocationDetails {
   postalCode?: string;
   address?: string;
 }
-export type ConfirmLocationDetails=Omit<LocationDetails, "countryCode">
+export type ConfirmLocationDetails = Omit<LocationDetails, "countryCode">;
 
+export interface IGround {
+  title: string;
+  images: string[];
+  description: string[];
+  [key: string]: any;
+}

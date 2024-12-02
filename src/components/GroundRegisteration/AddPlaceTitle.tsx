@@ -8,11 +8,12 @@ interface Props {
 
 type FieldType = {
   title: string;
+  description: string;
 };
 
 export default function AddPlaceTitle({ handleNext }: Props) {
   const onFinish = async (d: FieldType) => {
-    handleNext({ title: d.title });
+    handleNext({ ...d });
   };
 
   const onFinishFailed = (errorInfo: any) => {
@@ -53,7 +54,26 @@ export default function AddPlaceTitle({ handleNext }: Props) {
               { max: 100, message: "Title must not exceed 100 characters." }, // Added max character limit validation
             ]}
           >
-            <Input  placeholder="Place title" size="large"  />
+            <Input placeholder="Place title" size="large" />
+          </Form.Item>
+          <Form.Item<FieldType>
+            label={null}
+            name="description"
+            rules={[
+              {
+                required: true,
+                message: "Please input your place description!",
+              },
+              {
+                max: 100,
+                message: "Description must not exceed 100 characters.",
+              }, // Added max character limit validation
+            ]}
+          >
+            <Input
+              placeholder="Place Description"
+              size="large"
+            />
           </Form.Item>
         </div>
       </Form>

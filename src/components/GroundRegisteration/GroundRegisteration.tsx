@@ -20,7 +20,6 @@ import { useNotification } from "../context/NotificationContext/NotificationCont
 export default function GroundRegisteration() {
   const { openNotification } = useNotification();
   const router = useRouter();
-  const { data: session } = useSession();
   const [currentStep, setCurrentStep] = useState(1);
   const [totalSteps, setTotalSteps] = useState(8);
   const [groundData, setGroundData] = useState<Record<string, any>>({});
@@ -40,7 +39,6 @@ export default function GroundRegisteration() {
     const response:any = await createGround({
       ...groundData,
       ...d,
-      email: session?.user?.email,
     });
     if (response.status !== 201) {
       openNotification("error", "Error!", "something went wrong");
