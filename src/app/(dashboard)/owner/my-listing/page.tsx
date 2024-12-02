@@ -1,45 +1,11 @@
 import React from "react";
 import { Col, Row } from "antd";
-import styles from "../../../../styles/components/mylisting.module.scss";
 import CustomImage from "../../../../components/ui/CustomImage/CustomImage";
 import Header from "@/components/Header/Header";
 import { PlayNowApi } from "@/utils/playnow/api";
-import { getServerSession } from "next-auth";
-import { headers } from "next/headers";
 import { IGround } from "@/app/_lib/interfaces";
 
-const data = [
-  {
-    title: "Title goes here",
-    address: "Address goes here",
-    img: "listing1.png",
-  },
-  {
-    title: "Title goes here",
-    address: "Address goes here",
-    img: "listing2.png",
-  },
-  {
-    title: "Title goes here",
-    address: "Address goes here",
-    img: "listing33.png",
-  },
-  {
-    title: "Title goes here",
-    address: "Address goes here",
-    img: "listing33.png",
-  },
-  {
-    title: "Title goes here",
-    address: "Address goes here",
-    img: "listing33.png",
-  },
-  {
-    title: "Title goes here",
-    address: "Address goes here",
-    img: "listing33.png",
-  },
-];
+import styles from "../../../../styles/components/mylisting.module.scss";
 
 const getData = async () => {
   const api = new PlayNowApi();
