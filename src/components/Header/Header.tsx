@@ -30,7 +30,7 @@ const Header: React.FC = () => {
       />
       <ul className={styles.menu}>
         <li key="today">
-          <Link href="#">Today</Link>
+          <Link href="/owner/dashboard">Today</Link>
         </li>
         <li key="listings">
           <Link href="/owner/my-listing">Listings</Link>

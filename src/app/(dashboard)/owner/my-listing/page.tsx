@@ -23,7 +23,7 @@ const Listings: React.FC = async () => {
         <h1>Your listing</h1>
         <p>You can see all your listing here</p>
         <Row gutter={[16, 16]}>
-          {grounds.map((item, index) => (
+          {grounds?.map((item, index) => (
             <Col key={index}>
               <div className={styles.listingCard}>
                 <div className={styles.imgwrapper}>
