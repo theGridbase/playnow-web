@@ -10,6 +10,7 @@ export default function LogoutButton() {
   return (
     <Button
       style={{ width: "80px", minHeight: "30px !important" }}
+      className="small-btn"
       onClick={handleClick}
       type="primary"
     >

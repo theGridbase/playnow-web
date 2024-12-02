@@ -1,8 +1,16 @@
-"use client"
+"use client";
 
 import React from "react";
 import { Card, Typography, Table } from "antd";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Text as RechartsText,
+} from "recharts";
 import styles from "../../../../styles/components/earnings.module.scss";
 import Header from "@/components/Header/Header";
 
@@ -41,43 +49,70 @@ const EarningsSummary: React.FC = () => {
       size="small"
       rowKey="key"
       columns={[
-        { dataIndex: "label", key: "label", render: (text) => <Text>{text}</Text> },
+        {
+          dataIndex: "label",
+          key: "label",
+          render: (text) => <Text>{text}</Text>,
+        },
         { dataIndex: "value", key: "value", align: "right" },
       ]}
     />
   );
 
+  const CustomXAxisTick = (props: any) => {
+    const { x, y, payload } = props;
+    return (
+      <g transform={`translate(${x},${y})`}>
+        <foreignObject x={-20} y={0} width="35" height="20">
+          <div
+            style={{
+              background: "red",
+              color: "white",
+              textAlign: "center",
+              borderRadius: "10px",
+              padding: "2px",
+              fontSize: "12px",
+            }}
+          >
+            {payload.value}
+          </div>
+        </foreignObject>
+      </g>
+    );
+  };
+
   return (
     <>
-    <Header/>
-    <div className={styles.earningsSummary}>
-      <div className={styles.leftPane}>
-<p>
-You’ve made
-<span>$0.00</span> this month
-    </p>
-        <div className={styles.chart}>
-          <LineChart width={600} height={200} data={data}>
-            <CartesianGrid stroke="#f5f5f5" />
-            <XAxis dataKey="month" />
-            <YAxis />
-            <Tooltip />
-            <Line type="monotone" dataKey="earnings" stroke="#ff4d4f" strokeWidth={2} />
-          </LineChart>
+      <Header />
+      <div className={styles.earningsSummary}>
+        <div className={styles.leftPane}>
+          <p>
+            You’ve made <br /> <span>$0.00</span> this month
+          </p>
+          <div className={styles.chart}>
+            <LineChart width={700} height={300} data={data}>
+              <XAxis dataKey="month" tick={<CustomXAxisTick />} />
+              <YAxis />
+              <Tooltip />
+              <Line
+                type="monotone"
+                dataKey="earnings"
+                stroke="#ff4d4f"
+                strokeWidth={2}
+              />
+            </LineChart>
+          </div>
+          <div className={styles.status}>
+            <Title level={5}>Upcoming</Title>
+            <Text>No upcoming reservations at the moment.</Text>
+            <Title level={5}>Paid</Title>
+            <Text>Payouts are sent after guests check in.</Text>
+          </div>
         </div>
-        <div className={styles.status}>
-          <Title level={5}>Upcoming</Title>
-          <Text>No upcoming reservations at the moment.</Text>
-          <Title level={5}>Paid</Title>
-          <Text>Payouts are sent after guests check in.</Text>
+        <div className={styles.rightPane}>
+          <Card title="Year-to-date summary">{renderSummaryTable()}</Card>
         </div>
       </div>
-      <div className={styles.rightPane}>
-        <Card title="Year-to-date summary">
-          {renderSummaryTable()}
-        </Card>
-      </div>
-    </div>
     </>
   );
 };
