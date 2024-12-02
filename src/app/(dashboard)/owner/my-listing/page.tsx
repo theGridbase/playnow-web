@@ -22,7 +22,7 @@ const Listings: React.FC = async () => {
       <div className={styles.listingsContainer}>
         <h1>Your listing</h1>
         <p>You can see all your listing here</p>
-        <Row gutter={[16, 16]}>
+        {grounds?.length > 0 && <Row gutter={[16, 16]}>
           {grounds?.map((item, index) => (
             <Col key={index}>
               <div className={styles.listingCard}>
@@ -41,7 +41,7 @@ const Listings: React.FC = async () => {
               </div>
             </Col>
           ))}
-        </Row>
+        </Row>}
       </div>
     </>
   );

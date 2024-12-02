@@ -155,3 +155,8 @@ a.primary-link {
   background: transparent !important; /* Ensure background is transparent */
   border-bottom: 1px solid #f0f0f0 !important; /* Border stays the same (or change as needed) */
 }
+
+// React chart
+.small-btn {
+  min-height: 30px !important;
+}
