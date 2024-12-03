@@ -18,10 +18,14 @@ export default function ThemeProvider({
           // borderRadiusLG: 50,
         },
         components: {
-          Button: {
-          },
+          Button: {},
           Input: {
             paddingBlockLG: 15,
+          },
+          Calendar: {
+            fullBg: colorVariables.primaryColor,
+            fullPanelBg: colorVariables.primaryColor,
+            itemActiveBg: colorVariables.secondaryColor,
           },
         },
       }}

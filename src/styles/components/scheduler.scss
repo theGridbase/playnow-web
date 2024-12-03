@@ -1,0 +1,39 @@
+@import "../variables.module.scss";
+
+h1.heading-welcome {
+  font-size: 31px;
+}
+p.tag-line {
+  color: #655f5f;
+  font-size: 18px;
+}
+
+.rbc-calendar {
+  .rbc-btn-group {
+    gap: 5px;
+    button {
+      min-height: 28px !important;
+      font-size: 14px;
+      border-radius: 5px;
+      box-shadow: none;
+      border: none;
+    }
+    button.rbc-active {
+      background-color: $primary-color;
+      color: white;
+    }
+  }
+
+  .rbc-current {
+    // background-color: rgb(231, 55, 37, 0.5);
+  }
+  .rbc-event {
+    background: $primary-color;
+    padding-left: 10px;
+  }
+  .rbc-today {
+    background-color: rgb(231, 55, 37, 0.5);
+    border-radius: 5px;
+    border-left: 3px solid $primary-color;
+  }
+}

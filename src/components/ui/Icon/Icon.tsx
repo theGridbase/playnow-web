@@ -71,9 +71,12 @@ const Icon: React.FC<IconProperties> = ({
       beforeInjection={(svg: any) => {
         svg.classList.add("stroke-inherit");
         if (fill) svg.classList.add(fill);
+
         svg.setAttribute("style", `width: ${size}px; height: ${size}px`);
+
         svg.querySelectorAll("path").forEach((element: any) => {
           stroke && element.setAttribute("stroke", stroke);
+          fill && element.setAttribute("fill", fill);
           element.setAttribute("stroke-width", "1.4");
         });
       }}

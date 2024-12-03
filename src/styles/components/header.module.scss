@@ -1,53 +1,52 @@
+@import "../variables.module.scss";
 .headerContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background: #F9F9F9;
-
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: #f9f9f9;
 }
 
-
-
 .menu {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 3rem;
-    color: var(--Gray-1, #333);
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    letter-spacing: 0.32px;
-  
-    li {
-      a {
-        color: inherit; // This will inherit the text color from the .menu
-        text-decoration: none; // This will remove the underline
-        &:hover {
-          color: var(--custom-hover-color, #000); // Optional hover color
-        }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  color: var(--Gray-1, #333);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.32px;
+
+  li {
+    a {
+      color: inherit; // This will inherit the text color from the .menu
+      text-decoration: none; // This will remove the underline
+      &:hover {
+        color: var(--custom-hover-color, #000); // Optional hover color
       }
     }
-  }
-  
 
+    a.active {
+      color: $primary-color;
+    }
+  }
+}
 
 .actions {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 
-    .createListing {
-       
-        border-radius: 6px;
-        border: 1px solid var(--Light-Gray-Light-Gray-2, #DDE2E4);
-        background: var(--black-white-white, #FFF);
-        margin-right: 3.5rem;
-        min-height: 40px !important;
-    }
+  .createListing {
+    border-radius: 6px;
+    border: 1px solid var(--Light-Gray-Light-Gray-2, #dde2e4);
+    background: var(--black-white-white, #fff);
+    margin-right: 3.5rem;
+    min-height: 40px !important;
+  }
 
-    .badge {
-        margin-right: 20px;
-    }
+  .badge {
+    margin-right: 20px;
+  }
 }

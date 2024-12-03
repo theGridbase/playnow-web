@@ -80,9 +80,10 @@ a.primary-link {
   button {
     min-height: 30px !important;
   }
-}.react-calendar {
-  background: var(--orange, #E73725) !important;
-  color: var(--white, #FFF) !important;
+}
+.react-calendar {
+  background: var(--orange, #e73725) !important;
+  color: var(--white, #fff) !important;
   font-family: Poppins;
   width: 400px;
   border: none !important;
@@ -94,14 +95,14 @@ a.primary-link {
   justify-content: space-between;
 
   .react-calendar__navigation__label {
-    color: var(--white, #FFF);
+    color: var(--white, #fff);
     font-size: 30px;
     font-style: normal;
     font-weight: 400;
     line-height: 40px; /* 133.333% */
     transition: color 0.3s ease; /* Optional smooth transition */
   }
- 
+
   .react-calendar__navigation__label:hover {
     color: inherit; /* Remove color change on hover */
   }
@@ -125,7 +126,10 @@ a.primary-link {
 
 .react-calendar__tile.react-calendar__month-view__days__day--weekend,
 .react-calendar__tile.react-calendar__month-view__days__day--neighboringMonth {
-  color: var(--white, #FFF); /* White text color for weekend and neighboring month days */
+  color: var(
+    --white,
+    #fff
+  ); /* White text color for weekend and neighboring month days */
 }
 
 .react-calendar__tile.react-calendar__tile--now,
@@ -134,23 +138,23 @@ a.primary-link {
 .react-calendar__tile.react-calendar__tile--rangeStart,
 .react-calendar__tile.react-calendar__tile--rangeEnd,
 .react-calendar__tile.react-calendar__tile--rangeBothEnds {
-  background-color: #FFFF !important; /* Set background to white */
+  background-color: #ffff !important; /* Set background to white */
   border-radius: 150px !important; /* Apply border-radius */
-  border: 1px solid #B0B0B0; /* Add border with a light gray color */
+  border: 1px solid #b0b0b0; /* Add border with a light gray color */
   color: #000 !important;
 }
 
 .react-calendar__tile:hover {
-  background-color: #FFFF !important; /* Set background to white on hover */
+  background-color: #ffff !important; /* Set background to white on hover */
   color: #000 !important; /* Set text color to black on hover */
-  border: 1px solid #B0B0B0;
+  border: 1px solid #b0b0b0;
   border-radius: 150px !important; /* Apply border-radius */
 }
 
 .react-calendar__tile {
   /* Any other tile customizations can go here */
 }
- .ant-card-head {
+.ant-card-head {
   color: white !important; /* Force text color to white */
   background: transparent !important; /* Ensure background is transparent */
   border-bottom: 1px solid #f0f0f0 !important; /* Border stays the same (or change as needed) */
@@ -159,4 +163,57 @@ a.primary-link {
 // React chart
 .small-btn {
   min-height: 30px !important;
+}
+
+.ant-picker-date-panel {
+  border: none;
+  border-top: none !important;
+  .ant-picker-body {
+    table {
+      thead {
+        tr {
+          th {
+            color: white;
+          }
+        }
+      }
+      tbody {
+        tr {
+          td.ant-picker-cell-in-view {
+            .ant-picker-cell-inner {
+              padding: 15px !important;
+              min-height: 39px !important;
+              min-width: 27px !important;
+
+              .ant-picker-calendar-date-value {
+                border-radius: 50px;
+                width: 28px !important;
+                height: 28px !important;
+                color: white;
+              }
+            }
+          }
+          td.ant-picker-cell-selected {
+            .ant-picker-cell-inner {
+              padding: 15px !important;
+              min-height: 39px !important;
+              min-width: 27px !important;
+
+              &::before {
+                border: none !important;
+              }
+
+              .ant-picker-calendar-date-value {
+                background-color: white !important;
+                border-radius: 50px;
+                width: 28px !important;
+                height: 28px !important;
+                color: black !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }

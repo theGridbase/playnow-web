@@ -282,14 +282,23 @@
       }
 
       .daySlot {
-
         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
         border-radius: 15px;
         margin-bottom: 1rem;
         padding: 1.5rem;
+        margin-top: 0.5rem;
 
         button {
           min-height: 20px !important;
+        }
+
+        .slots {
+          
+          .priceInput {
+            input {
+              border-radius: 0px !important;
+            }
+          }
         }
       }
     }
@@ -332,7 +341,7 @@
       display: none;
     }
   }
-  
+
   .bankInfo {
     width: 622px;
     // padding: 0 10%;

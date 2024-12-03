@@ -24,12 +24,16 @@ export default function GroundRegisteration() {
   const [totalSteps, setTotalSteps] = useState(8);
   const [groundData, setGroundData] = useState<Record<string, any>>({});
 
+  useEffect(() => {
+    console.log("GR" , groundData);
+    
+  }, [groundData])
   // Calculate progress percentage dynamically
   const progressPercent = (currentStep / totalSteps) * 100;
 
   const handleNext = async (d: Record<string, any>) => {
     setGroundData((prev) => ({ ...prev, ...d }));
-    if (currentStep === 9) {
+    if (currentStep === 8) {
       return;
     }
     setCurrentStep((prev) => prev + 1);
@@ -68,10 +72,10 @@ export default function GroundRegisteration() {
       )}
       {currentStep === 4 && <AddPhotos handleNext={handleNext} />}
       {currentStep === 5 && <AddPlaceTitle handleNext={handleNext} />}
-      {currentStep === 6 && <AddPlacePrice handleNext={handleNext} />}
-      {currentStep === 7 && <AddAmenities handleNext={handleNext} />}
-      {currentStep === 8 && <AddSlots handleNext={handleNext} />}
-      {currentStep === 9 && (
+      {/* {currentStep === 6 && <AddPlacePrice handleNext={handleNext} />} */}
+      {currentStep === 6 && <AddAmenities handleNext={handleNext} />}
+      {currentStep === 7 && <AddSlots handleNext={handleNext} />}
+      {currentStep === 8 && (
         <AddBankDetails handleNext={handleNext} save={handleSaveGround} />
       )}
     </div>

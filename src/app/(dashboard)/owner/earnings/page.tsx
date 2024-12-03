@@ -33,11 +33,11 @@ const data = [
 
 const EarningsSummary: React.FC = () => {
   const summaryData = [
-    { key: "gross", label: "Gross earnings", value: "$0.00" },
-    { key: "adjustments", label: "Adjustments", value: "$0.00" },
-    { key: "serviceFee", label: "Service fee", value: "$0.00" },
-    { key: "tax", label: "Tax withheld", value: "$0.00" },
-    { key: "total", label: "Total (USD)", value: "$0.00" },
+    { key: "gross", label: "Gross earnings", value: "Rs 0.00" },
+    { key: "adjustments", label: "Adjustments", value: "Rs 0.00" },
+    { key: "serviceFee", label: "Service fee", value: "Rs 0.00" },
+    { key: "tax", label: "Tax withheld", value: "Rs 0.00" },
+    { key: "total", label: "Total (PKR)", value: "Rs 0.00" },
   ];
 
   const renderSummaryTable = () => (

@@ -5,12 +5,13 @@ import Link from "next/link";
 import { Menu, Button, Avatar, Dropdown } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import CustomImage from "../ui/CustomImage/CustomImage";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import styles from "../../styles/components/header.module.scss";
 import LogoutButton from "../LogoutButton/LogoutButton";
 
 const Header: React.FC = () => {
   const router = useRouter();
+  const pathname = usePathname()
 
   const menu = (
     <Menu>
@@ -18,7 +19,10 @@ const Header: React.FC = () => {
         <LogoutButton />
       </Menu.Item>
     </Menu>
-  );
+  );  
+
+  console.log(pathname);
+  
 
   return (
     <div className={styles.headerContainer}>
@@ -30,17 +34,17 @@ const Header: React.FC = () => {
       />
       <ul className={styles.menu}>
         <li key="today">
-          <Link href="/owner/dashboard">Today</Link>
+          <Link href="/owner" className={pathname === '/owner' ? styles.active : ''}>Today</Link>
         </li>
         <li key="listings">
-          <Link href="/owner/my-listing">Listings</Link>
+          <Link href="/owner/my-listing" className={pathname === '/owner/my-listing' ? styles.active : ''}>Listings</Link>
         </li>
 
         <li key="reservations">
-          <Link href="/owner/reservations">Reservations</Link>
+          <Link href="/owner/reservations" className={pathname === '/owner/reservations' ? styles.active : ''}>Reservations</Link>
         </li>
         <li key="earnings">
-          <Link href="/owner/earnings">Earnings</Link>
+          <Link href="/owner/earnings" className={pathname === '/owner/earnings' ? styles.active : ''}>Earnings</Link>
         </li>
 
       </ul>

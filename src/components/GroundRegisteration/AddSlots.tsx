@@ -1,7 +1,9 @@
+import dayjs from "dayjs";
 import React, { useState } from "react";
-import { Button, Flex, Form, Switch, TimePicker, message } from "antd";
+import { Button, Divider, Flex, Form, Input, Select, Switch, TimePicker } from "antd";
 import styles from "@/styles/components/ground.registration.module.scss";
 import { useNotification } from "../context/NotificationContext/NotificationContextProvider";
+import Icon from "../ui/Icon/Icon";
 
 const daysOfWeek = [
   "Monday",
@@ -20,9 +22,17 @@ interface Props {
 type SlotType = {
   [key: string]: {
     active: boolean;
-    times: { start: string; end: string }[];
+    times: { start: string; end: string; price?: number }[];
   };
 };
+
+const selectBefore = (
+  <Select
+    defaultValue="PKR"
+    options={[{ value: "PKR", label: "Rs." }]}
+    suffixIcon={<Icon name="downarrow.svg" size="12" />}
+  />
+);
 
 export default function AddSlots({ handleNext }: Props) {
   const { openNotification } = useNotification();
@@ -32,7 +42,7 @@ export default function AddSlots({ handleNext }: Props) {
         ...acc,
         [day]: {
           active: true,
-          times: [{ start: "", end: "" }], // Default to one empty time slot
+          times: [{ start: "", end: "", price: undefined }],
         },
       }),
       {}
@@ -49,22 +59,36 @@ export default function AddSlots({ handleNext }: Props) {
     }));
   };
 
-  const onChangeSlotTime = (
+  const onChangeSlot = (
     day: string,
     index: number,
-    key: "start" | "end",
+    key: "start" | "end" | "price",
     value: any
   ) => {
-    const formattedTime = value ? value.format("h:mm A") : ""; // Format time as hh:mm A (AM/PM)
-    setSlots((prev) => ({
-      ...prev,
-      [day]: {
-        ...prev[day],
-        times: prev[day].times.map((slot, idx) =>
-          idx === index ? { ...slot, [key]: formattedTime } : slot
-        ),
-      },
-    }));
+    const formattedValue =
+      key === "price" ? value : value ? value.format("HH:mm") : "";
+
+    setSlots((prev) => {
+      if (day === "Monday" && index === 0) {
+        const updatedSlots = { ...prev };
+        daysOfWeek.forEach((d) => {
+          updatedSlots[d].times[0] = {
+            ...updatedSlots[d].times[0],
+            [key]: formattedValue,
+          };
+        });
+        return updatedSlots;
+      }
+      return {
+        ...prev,
+        [day]: {
+          ...prev[day],
+          times: prev[day].times.map((slot, idx) =>
+            idx === index ? { ...slot, [key]: formattedValue } : slot
+          ),
+        },
+      };
+    });
   };
 
   const addSlot = (day: string) => {
@@ -72,7 +96,7 @@ export default function AddSlots({ handleNext }: Props) {
       ...prev,
       [day]: {
         ...prev[day],
-        times: [...prev[day].times, { start: "", end: "" }],
+        times: [...prev[day].times, { start: "", end: "", price: undefined }],
       },
     }));
   };
@@ -88,36 +112,44 @@ export default function AddSlots({ handleNext }: Props) {
   };
 
   const validateSlots = () => {
-    let hasValidSlots = false;
-
     for (const day of daysOfWeek) {
       const { active, times } = slots[day];
-
-      // Skip inactive days
       if (!active) continue;
 
-      hasValidSlots = true; // At least one day is active
-
       for (const slot of times) {
-        // Ensure all active slots have both start and end times
-        if (!slot.start || !slot.end) {
-          openNotification("error", "Error!", `Please ensure all slots for ${day} have both start and end times.`)
+        if (
+          !slot.start ||
+          !slot.end ||
+          slot.price === undefined ||
+          slot.price <= 0
+        ) {
+          openNotification(
+            "error",
+            "Error!",
+            `Ensure all slots for ${day} have start, end times, and a valid price.`
+          );
           return false;
         }
       }
     }
-    
-    if (!hasValidSlots) {
-      openNotification("error", "Error!", "Please configure slots for at least one day.")
-      return false;
-    }
-
     return true;
   };
 
   const onFinish = () => {
     if (validateSlots()) {
-      handleNext({ slots: slots });
+      const updatedSlots = Object.fromEntries(
+        Object.entries(slots).map(([day, { active, times }]) => [
+          day,
+          {
+            active,
+            times: times.map((slot) => ({
+              ...slot,
+              price: slot.price ?? 0,
+            })),
+          },
+        ])
+      );
+      handleNext({ slots: updatedSlots });
     }
   };
 
@@ -142,7 +174,6 @@ export default function AddSlots({ handleNext }: Props) {
           </Button>
         </Flex>
         <h1 className={styles.screenName}>Now, set your slots</h1>
-        <p className={styles.screenDescription}>You can change it any time</p>
         <div className={styles.formBody}>
           {daysOfWeek.map((day) => (
             <div key={day} className={styles.daySlot}>
@@ -160,38 +191,59 @@ export default function AddSlots({ handleNext }: Props) {
               {slots[day].active && (
                 <div className={styles.slots}>
                   {slots[day].times.map((slot, index) => (
-                    <Flex
-                      align="center"
-                      justify="space-between"
-                      key={`${day}-slot-${index}`}
-                      className={styles.slotRow}
-                    >
-                      <TimePicker
-                        placeholder="Start Time"
-                        use12Hours
-                        format="h:mm A"
-                        onChange={(value) =>
-                          onChangeSlotTime(day, index, "start", value)
-                        }
-                        className={styles.timePicker}
-                      />
-                      <TimePicker
-                        placeholder="End Time"
-                        use12Hours
-                        format="h:mm A"
-                        onChange={(value) =>
-                          onChangeSlotTime(day, index, "end", value)
-                        }
-                        className={styles.timePicker}
-                      />
-                      <Button
-                        type="link"
-                        danger
-                        onClick={() => removeSlot(day, index)}
+                    <React.Fragment key={`${day}-slot-${index}`}>
+                      <Flex
+                        align="center"
+                        justify="space-between"
+                        className={`${styles.slotRow} mb-small`}
                       >
-                        Remove
-                      </Button>
-                    </Flex>
+                        <TimePicker
+                          placeholder="Start Time"
+                          use12Hours
+                          format="h:mm A"
+                          value={slot.start ? dayjs(slot.start, "HH:mm") : null}
+                          onChange={(value) =>
+                            onChangeSlot(day, index, "start", value)
+                          }
+                          className={styles.timePicker}
+                        />
+                        <TimePicker
+                          placeholder="End Time"
+                          use12Hours
+                          format="h:mm A"
+                          value={slot.end ? dayjs(slot.end, "HH:mm") : null}
+                          onChange={(value) =>
+                            onChangeSlot(day, index, "end", value)
+                          }
+                          className={styles.timePicker}
+                        />
+                        <Button
+                          type="link"
+                          danger
+                          onClick={() => removeSlot(day, index)}
+                        >
+                          Remove
+                        </Button>
+                      </Flex>
+                      <Input
+                        placeholder="Price"
+                        type="number"
+                        min={1}
+                        value={slot.price ?? ""}
+                        onChange={(e) =>
+                          onChangeSlot(
+                            day,
+                            index,
+                            "price",
+                            Number(e.target.value)
+                          )
+                        }
+                        addonBefore={selectBefore}
+                        addonAfter={"/Hr"}
+                        className={styles.priceInput}
+                      />
+                      <Divider />
+                    </React.Fragment>
                   ))}
                   {slots[day].times.length < 7 && (
                     <Button

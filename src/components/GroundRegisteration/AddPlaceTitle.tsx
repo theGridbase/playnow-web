@@ -65,6 +65,10 @@ export default function AddPlaceTitle({ handleNext }: Props) {
                 message: "Please input your place description!",
               },
               {
+                min: 10,
+                message: "Description must not be less than 10 characters.",
+              }, // Added max character limit validation
+              {
                 max: 100,
                 message: "Description must not exceed 100 characters.",
               }, // Added max character limit validation
