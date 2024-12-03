@@ -138,7 +138,10 @@ a.primary-link {
   border-radius: 150px !important; /* Apply border-radius */
   border: 1px solid #B0B0B0; /* Add border with a light gray color */
   color: #000 !important;
+  width: 4px !important;
+height: 4px !important;
 }
+
 
 .react-calendar__tile:hover {
   background-color: #FFFF !important; /* Set background to white on hover */
@@ -159,4 +162,29 @@ a.primary-link {
 // React chart
 .small-btn {
   min-height: 30px !important;
+}
+
+.rbc-button-link{
+  color: #000;
+font-size: 20.847px;
+font-style: normal;
+font-weight: 500;
+line-height: 30.323px; /* 145.455% */
+padding-bottom: 15px !important;
+}
+.rbc-label{
+  color: var(--gray-500, #71717A);
+
+font-size: 11.371px;
+font-style: normal;
+font-weight: 500;
+line-height: 15.162px; /* 133.333% */
+}
+
+.rbc-header{
+  color: #000;
+font-size: 20.847px;
+font-style: normal;
+font-weight: 500;
+line-height: 30.323px; /* 145.455% */
 }

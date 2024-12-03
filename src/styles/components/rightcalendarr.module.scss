@@ -1,0 +1,77 @@
+.calendarContainer {
+    height: 80vh;
+    padding: 20px;
+    position: relative;
+  }
+  
+  .h1 {
+    color: #000;
+    font-size: 31.654px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  
+  .p {
+    color: #655F5F;
+font-size: 18.465px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+    margin-bottom: 20px;
+  }
+  
+  .searchInput {
+    position: absolute;
+    top: 130px;
+    right: 20px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 250px;
+  }
+  
+  .toolbar {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+  
+  .toolbarButton {
+    display: flex;
+    padding: 4px 16px;
+    align-items: center;
+    gap: 8px;
+    border-radius: 8px;
+    background: var(--red-600, #DC2626);
+    min-height: 30px !important;
+    color: var(--white, #FFF);
+    border: none;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; /* 142.857% */
+    
+    /* Unselected state */
+    background: white;
+   color: var(--gray-500, #71717A)
+  }
+  
+  .toolbarbtn {
+    /* Selected state style */
+    background: var(--red-600, #DC2626);
+    color: #fff;
+  }
+  
+  
+  .react-big-calendar {
+    .rbc-event {
+      background-color: #E73725 !important;
+      border-radius: 0px 6px 0px 0px;
+      border: none !important;
+    }
+  }
+  

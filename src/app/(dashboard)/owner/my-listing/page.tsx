@@ -1,3 +1,5 @@
+"use client"
+
 import React from "react";
 import { Col, Row } from "antd";
 import CustomImage from "../../../../components/ui/CustomImage/CustomImage";
@@ -18,7 +20,9 @@ const Listings: React.FC = async () => {
 
   return (
     <>
+    
       <Header />
+      
       <div className={styles.listingsContainer}>
         <h1>Your listing</h1>
         <p>You can see all your listing here</p>
