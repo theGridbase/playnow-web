@@ -2,6 +2,10 @@
 
 import Header from "@/components/Header/Header";
 import Leftcalendar from "@/components/Leftccalendar/leftcakendar";
+import MainHeader from  "@/components/MainHeader/Mainheader";
+import Profilesections from  "@/app/(dashboard)/owner/main-profile/page";
+import Personalinfo from  "@/app/(dashboard)/owner/profile/page";
+
 
 import { Col, Flex, Row } from "antd";
 import dynamic from "next/dynamic";
@@ -20,6 +24,8 @@ export default function page() {
           <Scheduler />
         </div>
       </Flex>
+      
+      {/* <Personalinfo/> */}
     </div>
   );
 }

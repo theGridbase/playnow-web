@@ -1,0 +1,96 @@
+.container {
+  padding: 42px 80px 70px 80px;
+
+  @media (max-width: 768px) {
+   
+  }
+
+  .header {
+    margin-bottom: 20px;
+
+    .account {
+      color: #000;
+      font-size: 32px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+
+      @media (max-width: 768px) {
+        font-size: 28px; /* Reduce title size on smaller screens */
+      }
+    }
+
+    .email {
+      color: #6B6267;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+
+      a {
+        color: var(--orange, #E73725);
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+      }
+
+      @media (max-width: 768px) {
+        font-size: 18px; /* Reduce email text size */
+      }
+    }
+  }
+
+  .card {
+    padding: 26px 60px 26px 26px;
+    border-radius: 13px;
+    border: 2px solid #f2f2f2;
+    background: #fefefe;
+    width: 100%;
+    height: 193px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s ease;
+
+    @media (max-width: 768px) {
+      padding: 20px; /* Reduce padding for smaller screens */
+      height: auto; /* Allow height to adjust based on content */
+    }
+
+    &:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .icon {
+      font-size: 32px;
+      color: #e73725;
+      margin-bottom: 10px;
+    }
+
+    .title {
+      color: #181818;
+      font-size: 17.5px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      margin-top: 10px;
+
+      @media (max-width: 768px) {
+        font-size: 16px; /* Adjust title size for smaller screens */
+      }
+    }
+
+    .description {
+      color: #a9a5a8;
+      font-size: 15.5px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      word-wrap: break-word; /* Ensure long words wrap */
+
+      @media (max-width: 768px) {
+        font-size: 14px; /* Adjust description size for smaller screens */
+      }
+    }
+  }
+}

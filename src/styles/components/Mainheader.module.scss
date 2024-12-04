@@ -1,0 +1,132 @@
+.mainHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+     padding: 32px 80px 10px 80px;
+    background-color: white;
+   
+  
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+  
+    .desktopNav {
+      display: flex;
+  
+      .navList {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+  
+        li {
+          margin: 0 15px;
+  
+          a {
+            text-decoration: none;
+            color: #727272;
+  
+            &:hover {
+              color: #e73725;
+            }
+          }
+        }
+      }
+    }
+  
+    .searchInput {
+      max-width: 300px;
+      min-width: 200px;
+      margin-right: 20px;
+      border-radius: 8px !important;
+      padding: 14px 16px;
+      margin-right: 1px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(175, 175, 175, 0.05);
+      backdrop-filter: blur(5.7px);
+      color: rgba(1, 0, 0, 0.4) !important;
+      font-size: 14px;
+  
+      @media (max-width: 800px) {
+        display: none;
+      }
+    }
+  
+    .authButtons {
+      display: flex;
+      align-items: center;
+      margin-right: 20px;
+  
+      .loginButton {
+        margin-right: 10px;
+      }
+  
+      .signUpButton {
+        display: flex;
+        width: 99px;
+        min-height: 42px !important;
+        padding: 12px 14px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        border-radius: 5px;
+background: var(--orange, #E73725);
+      }
+    }
+  
+    .mobileMenuButton {
+      display: none;
+    }
+  
+    @media (max-width: 800px) {
+      .desktopNav,
+      .searchInput,
+      .authButtons {
+        display: none;
+      }
+  
+      .mobileMenuButton {
+        display: block;
+        border: none;
+        background: none;
+        font-size: 24px;
+      }
+    }
+  }
+  
+  .mobileDrawer {
+    .mobileNavList {
+      list-style: none;
+      padding: 0;
+  
+      li {
+        margin: 20px 0;
+  
+        a {
+          text-decoration: none;
+          color: #727272;
+  
+          &:hover {
+            color: #e73725;
+          }
+        }
+      }
+    }
+  
+    .mobileAuthButtons {
+      display: flex;
+      flex-direction: column;
+  
+      .loginButton {
+        margin-bottom: 10px;
+      }
+  
+      .signUpButton {
+        background: #e73725;
+        color: white;
+      }
+    }
+  }
+  
