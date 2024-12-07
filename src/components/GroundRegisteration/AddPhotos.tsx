@@ -10,9 +10,10 @@ const { Dragger } = Upload;
 
 interface Props {
   handleNext: (d: Record<string, any>) => void;
+  handlePrev: () => void;
 }
 
-export default function AddPhotos({ handleNext }: Props) {
+export default function AddPhotos({ handleNext,handlePrev }: Props) {
   const [fileList, setFileList] = useState<any[]>([]);
   const [imageBase64, setImageBase64] = useState<string[]>([]); // Store base64 images
   const [isButtonDisabled, setIsButtonDisabled] = useState(true); // Button disabled state
@@ -73,7 +74,16 @@ export default function AddPhotos({ handleNext }: Props) {
 
   return (
     <div className={styles.photosStep}>
-      <Flex align="center" justify="flex-end">
+       <Flex align="center" justify="space-between" className="mb-small">
+        <Button
+          type="default"
+          shape="round"
+          size="large"
+          className={styles.button}
+          onClick={() => handlePrev()}
+        >
+          Back
+        </Button>
         <Button
           type="default"
           shape="round"

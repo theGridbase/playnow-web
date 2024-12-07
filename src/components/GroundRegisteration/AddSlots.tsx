@@ -17,6 +17,7 @@ const daysOfWeek = [
 
 interface Props {
   handleNext: (slots: Record<string, any>) => void;
+  handlePrev: () => void;
 }
 
 type SlotType = {
@@ -34,7 +35,7 @@ const selectBefore = (
   />
 );
 
-export default function AddSlots({ handleNext }: Props) {
+export default function AddSlots({ handleNext,handlePrev }: Props) {
   const { openNotification } = useNotification();
   const [slots, setSlots] = useState<SlotType>(
     daysOfWeek.reduce(
@@ -162,7 +163,16 @@ export default function AddSlots({ handleNext }: Props) {
         autoComplete="off"
         className={styles.addSlotsForm}
       >
-        <Flex align="center" justify="flex-end">
+         <Flex align="center" justify="space-between">
+        <Button
+          type="default"
+          shape="round"
+          size="large"
+          className={styles.button}
+          onClick={() => handlePrev()}
+        >
+          Back
+        </Button>
           <Button
             type="default"
             shape="round"
@@ -176,8 +186,8 @@ export default function AddSlots({ handleNext }: Props) {
         <h1 className={styles.screenName}>Now, set your slots</h1>
         <div className={styles.formBody}>
           {daysOfWeek.map((day) => (
-            <div key={day} className={styles.daySlot}>
-              <Flex
+            <div key={day} className={styles.daySlot} >
+              <Flex 
                 align="center"
                 justify="space-between"
                 className={styles.dayHeader}
@@ -189,10 +199,10 @@ export default function AddSlots({ handleNext }: Props) {
                 />
               </Flex>
               {slots[day].active && (
-                <div className={styles.slots}>
+                <div className={styles.slots} >
                   {slots[day].times.map((slot, index) => (
                     <React.Fragment key={`${day}-slot-${index}`}>
-                      <Flex
+                      <Flex 
                         align="center"
                         justify="space-between"
                         className={`${styles.slotRow} mb-small`}

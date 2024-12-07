@@ -38,6 +38,13 @@ export default function GroundRegisteration() {
     }
     setCurrentStep((prev) => prev + 1);
   };
+  const handlePrev= async () => {
+    if (currentStep ===1){
+      router.replace("/owner")
+      return;
+    }
+    setCurrentStep((prev) => prev - 1);
+  };
 
   const handleSaveGround = async (d: Record<string, any>) => {
     const response:any = await createGround({
@@ -62,21 +69,22 @@ export default function GroundRegisteration() {
         className="mb-large"
       />
       {/* Amenities Step */}
-      {currentStep === 1 && <ChoosePlaceTypes handleNext={handleNext} />}
-      {currentStep === 2 && <AddLocation handleNext={handleNext} />}
+      {currentStep === 1 && <ChoosePlaceTypes handleNext={handleNext} handlePrev={handlePrev} />}
+      {currentStep === 2 && <AddLocation handleNext={handleNext} handlePrev={handlePrev}  />}
       {currentStep === 3 && (
         <ConfirmLocation
           location={groundData?.location}
           handleNext={handleNext}
+          handlePrev={handlePrev}
         />
       )}
-      {currentStep === 4 && <AddPhotos handleNext={handleNext} />}
-      {currentStep === 5 && <AddPlaceTitle handleNext={handleNext} />}
+      {currentStep === 4 && <AddPhotos handleNext={handleNext} handlePrev={handlePrev} />}
+      {currentStep === 5 && <AddPlaceTitle handleNext={handleNext} handlePrev={handlePrev} />}
       {/* {currentStep === 6 && <AddPlacePrice handleNext={handleNext} />} */}
-      {currentStep === 6 && <AddAmenities handleNext={handleNext} />}
-      {currentStep === 7 && <AddSlots handleNext={handleNext} />}
+      {currentStep === 6 && <AddAmenities handleNext={handleNext} handlePrev={handlePrev} />}
+      {currentStep === 7 && <AddSlots handleNext={handleNext} handlePrev={handlePrev} />}
       {currentStep === 8 && (
-        <AddBankDetails handleNext={handleNext} save={handleSaveGround} />
+        <AddBankDetails handleNext={handleNext} save={handleSaveGround} handlePrev={handlePrev}  />
       )}
     </div>
   );

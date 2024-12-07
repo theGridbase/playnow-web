@@ -6,9 +6,10 @@ import styles from "@/styles/components/ground.registration.module.scss";
 
 interface Props {
   handleNext: (d: Record<string, any>) => void;
+  handlePrev: () => void;
 }
 
-function AddAmenities({ handleNext }: Props) {
+function AddAmenities({ handleNext,handlePrev }: Props) {
   const [amenitiesStandout, setAmenitiesStandout] = useState<string[]>([]);
   const [amenitiesUserFav, setAmenitiesUserFav] = useState<string[]>([]);
   const [selectedAmenities, setSelectedAmenities] = useState<string[]>([]);
@@ -36,7 +37,16 @@ function AddAmenities({ handleNext }: Props) {
   }, []);
   return (
     <div className={styles.amenitiesStepSelection}>
-      <Flex align="center" justify="flex-end">
+       <Flex align="center" justify="space-between" className="mb-small">
+        <Button
+          type="default"
+          shape="round"
+          size="large"
+          className={styles.button}
+          onClick={() => handlePrev()}
+        >
+          Back
+        </Button>
         <Button
           type="default"
           shape="round"
