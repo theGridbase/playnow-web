@@ -4,6 +4,7 @@ import styles from "@/styles/components/ground.registration.module.scss";
 
 interface Props {
   handleNext: (d: Record<string, any>) => void;
+  handlePrev: () => void;
 }
 
 type FieldType = {
@@ -11,7 +12,7 @@ type FieldType = {
   description: string;
 };
 
-export default function AddPlaceTitle({ handleNext }: Props) {
+export default function AddPlaceTitle({ handleNext, handlePrev}: Props) {
   const onFinish = async (d: FieldType) => {
     handleNext({ ...d });
   };
@@ -30,7 +31,16 @@ export default function AddPlaceTitle({ handleNext }: Props) {
         autoComplete="off"
         className={styles.placeTitleForm}
       >
-        <Flex align="center" justify="flex-end">
+          <Flex align="center" justify="space-between">
+        <Button
+          type="default"
+          shape="round"
+          size="large"
+          className={styles.button}
+          onClick={() => handlePrev()}
+        >
+          Back
+        </Button>
           <Button
             type="default"
             shape="round"

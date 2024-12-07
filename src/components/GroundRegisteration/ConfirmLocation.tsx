@@ -7,6 +7,7 @@ import { Button, Flex, Form, Input } from "antd";
 interface Props {
   location: LocationDetails;
   handleNext: (d: Record<string, any>) => void;
+  handlePrev: () => void;
 }
 
 const labels = {
@@ -17,7 +18,7 @@ const labels = {
   address: "Address",
 };
 
-export default function ConfirmLocation({ location, handleNext }: Props) {
+export default function ConfirmLocation({ location, handleNext,handlePrev }: Props) {
   const {countryCode , ...rest} = location
   const onFinish = async (formData: LocationDetails) => {
     handleNext({ location: location });
@@ -38,7 +39,16 @@ export default function ConfirmLocation({ location, handleNext }: Props) {
         autoComplete="off"
         className={styles.confirmAddressForm}
       >
-        <Flex align="center" justify="flex-end">
+        <Flex align="center" justify="space-between" className="mb-small">
+        <Button
+          type="default"
+          shape="round"
+          size="large"
+          className={styles.button}
+          onClick={() => handlePrev()}
+        >
+          Back
+        </Button>
           <Button
             type="default"
             shape="round"

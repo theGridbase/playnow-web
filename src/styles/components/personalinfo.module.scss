@@ -1,8 +1,10 @@
 .container {
   padding: 32px 500px 170px 80px;
-   @media (max-width: 768px) {
+
+  @media (max-width: 768px) {
     padding: 32px 50px 170px 80px;
-      }
+  }
+
   h1 {
     font-size: 24px;
     margin-bottom: 20px;
@@ -19,60 +21,112 @@
       margin-bottom: 20px;
       padding: 10px;
       border-bottom: 1px solid #e6e6e6;
-
       transition: background-color 0.3s;
 
-      // Make the layout responsive
       @media (max-width: 768px) {
         flex-direction: column;
         align-items: flex-start;
       }
-    }
 
-    .detailText {
-      font-size: 16px;
-      color: #555;
+      .detailText {
+        font-size: 16px;
+        color: #555;
 
-      .title {
-        color: #635960;
-        font-size: 22px;
-        font-weight: 500;
-        line-height: normal;
-      }
+        .title {
+          color: #635960;
+          font-size: 22px;
+          font-weight: 500;
+          line-height: normal;
+        }
 
-      .description {
-        color: #969696;
-        font-size: 18px;
-        font-weight: 400;
-        line-height: normal;
-        margin-top: -20px;
-      }
-    }
-
-    .actions {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-
-      .addbtn {
-        color: #635960;
-        font-size: 22px;
-        font-weight: 500;
-        text-decoration-line: underline;
-        border: none;
-        
-        // Adjust button styling for smaller screens
-        @media (max-width: 768px) {
+        .description {
+          color: #969696;
           font-size: 18px;
-          text-align: center;
-          width: 100%;
+          font-weight: 400;
+          line-height: normal;
+          margin-top: -20px;
+        }
+      }
+
+      .actions {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        .addbtn {
+          color: #635960;
+          font-size: 22px;
+          font-weight: 500;
+          text-decoration-line: underline;
+          border: none;
+
+          @media (max-width: 768px) {
+            font-size: 18px;
+            text-align: center;
+            width: 100%;
+          }
         }
       }
     }
   }
 }
 
-// Add a media query for mobile-first responsiveness
+// Accordion styles
+.accordionContent {
+  margin-top: 20px;
+
+  .ant-collapse {
+    border: none;
+    background: #f9f9f9;
+  }
+
+  .ant-collapse-header {
+    font-weight: bold;
+    font-size: 18px;
+    color: #635960;
+  }
+
+  .ant-form-item {
+    margin-bottom: 15px;
+
+    label {
+      font-size: 16px;
+      font-weight: 500;
+      color: #333;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #d9d9d9;
+      border-radius: 4px;
+
+      &:focus {
+        border-color: #1890ff;
+        box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+      }
+    }
+  }
+
+  button {
+    margin-top: 15px;
+    background: #635960;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+
+    &:hover {
+      background: #514950;
+    }
+  }
+}
+
+// Responsive styles for mobile screens
 @media (max-width: 576px) {
   .container {
     padding: 16px;

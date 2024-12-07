@@ -9,12 +9,12 @@ import Icon from "../../../../components/ui/Icon/Icon";
 import Link from "next/link"
 const AccountPage: React.FC = () => {
   const cards = [
-    { title: "Personal info", description: "Provide personal details and how we can reach you", name: "profile.svg" },
-    { title: "My Bookings", description: "Update your password and secure your account", name: "booking.svg" },
-    { title: "Transactions", description: "Review payments, payouts, coupons, and gift cards", name: "transaction.svg" },
-    { title: "Preferences", description: "Manage taxpayer information and tax documents", name: "preferences" },
-    { title: "Contact Us", description: "Choose notification preferences and how you want to be contacted", name: "phone.svg" },
-    { title: "Privacy Policy", description: "Choose notification preferences and how you want to be contacted", name: "privacypolicy.svg" },
+    { title: "Personal info", description: "Provide personal details and how we can reach you", name: "profile.svg" ,link: "/owner/profile"},
+    { title: "My Bookings", description: "Update your password and secure your account", name: "booking.svg" ,link: "/owner/reservations"},
+    { title: "Transactions", description: "Review payments, payouts, coupons, and gift cards", name: "transaction.svg",link: "/owner/earnings" },
+    // { title: "Preferences", description: "Manage taxpayer information and tax documents", name: "preferences", },
+   
+  
   ];
 
   return (

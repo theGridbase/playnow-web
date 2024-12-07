@@ -109,6 +109,7 @@
     }
 
     .formBody {
+      
       width: 50%;
       margin: 0 auto;
 
@@ -273,6 +274,7 @@
     }
 
     .formBody {
+      
       width: 30%;
       margin: 0 auto;
 
@@ -332,7 +334,10 @@
       font-size: 14px;
     }
   }
-
+.paymentOptions{
+  display: flex;
+  justify-content: flex-end;
+}
   .globeImage {
     position: relative;
     // width: 40%;

@@ -12,6 +12,7 @@ import styles from "@/styles/components/ground.registration.module.scss";
 
 interface Props {
   handleNext: (d: Record<string, any>) => void;
+  handlePrev: () => void;
 }
 
 // Type declaration for GeoSearchControl if TypeScript doesn't recognize it
@@ -111,14 +112,24 @@ const MyCustomIcon = L.divIcon({
   iconSize: [40, 40], // Adjust size
 });
 
-const AddLocation = ({ handleNext }: Props) => {
+const AddLocation = ({ handleNext,handlePrev }: Props) => {
   const [locationDetails, setLocationDetails] = useState<LocationDetails>({});
 
   const [showDetails, setShowDetails] = useState(false);
 
   return (
     <div className={styles.addressStep}>
-      <Flex align="center" justify="flex-end">
+      
+      <Flex align="center" justify="space-between">                  
+      <Button
+          type="default"
+          shape="round"
+          size="large"
+          className={styles.button}
+          onClick={() => handlePrev()}
+        >
+          Back
+        </Button>
         <Button
           type="default"
           shape="round"
